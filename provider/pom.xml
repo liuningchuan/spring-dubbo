@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.liuning</groupId>
-    <artifactId>dubbo</artifactId>
+    <artifactId>provider</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>dubbo-provider</name>
     <description>Dubbo Provider Using Spring Boot</description>
