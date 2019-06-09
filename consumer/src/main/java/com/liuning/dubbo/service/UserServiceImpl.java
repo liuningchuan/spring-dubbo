@@ -1,12 +1,11 @@
 package com.liuning.dubbo.service;
 
-
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.liuning.dubbo.entity.User;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserDubboService {
+public class UserServiceImpl {
 
     @Reference
     private UserService userService;
