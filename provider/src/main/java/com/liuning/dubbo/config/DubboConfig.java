@@ -4,12 +4,12 @@ import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ProtocolConfig;
 import org.apache.dubbo.config.ProviderConfig;
 import org.apache.dubbo.config.RegistryConfig;
-import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
+import org.apache.dubbo.config.spring.context.annotation.DubboComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableDubbo(scanBasePackages = "com.liuning.dubbo.service.impl")
+@DubboComponentScan(basePackages = "com.liuning.dubbo.service.impl")
 public class DubboConfig {
 
     @Bean
@@ -30,7 +30,8 @@ public class DubboConfig {
     public RegistryConfig registryConfig() {
         RegistryConfig registryConfig = new RegistryConfig();
         registryConfig.setProtocol("zookeeper");
-        registryConfig.setAddress("localhost");
+        registryConfig.setClient("curator");
+        registryConfig.setAddress("localhost:2181");
         registryConfig.setPort(2181);
         return registryConfig;
     }

@@ -14,26 +14,10 @@ package org.apache.dubbo.config.spring.context.annotation;
 @EnableDubboConfig
 @DubboComponentScan
 public @interface EnableDubbo {
-    /**
-     * Base packages to scan for annotated @Service classes.
-     * <p>
-     * Use {@link #scanBasePackageClasses()} for a type-safe alternative to String-based
-     * package names.
-     *
-     * @return the base packages to scan
-     * @see DubboComponentScan#basePackages()
-     */
+  
     @AliasFor(annotation = DubboComponentScan.class, attribute = "basePackages")
     String[] scanBasePackages() default {};
 
-    /**
-     * Type-safe alternative to {@link #scanBasePackages()} for specifying the packages to
-     * scan for annotated @Service classes. The package of each class specified will be
-     * scanned.
-     *
-     * @return classes from the base packages to scan
-     * @see DubboComponentScan#basePackageClasses
-     */
     @AliasFor(annotation = DubboComponentScan.class, attribute = "basePackageClasses")
     Class<?>[] scanBasePackageClasses() default {};    
 }
@@ -44,6 +28,86 @@ public @interface EnableDubbo {
 扫描到 Dubbo 的服务提供方和消费者之后，对其做相应的组装并初始化，并最终完成服务暴露或者引用的工作。
 
 当然，如果不使用外部化配置（External Configuration）的话，也可以直接使用 `@DubboComponentScan`。
+
+通过 Spring 中 Java Config 的技术（`@Configuration`）和 annotation 扫描（`@EnableDubbo`）来发现、组装、并向外提供 Dubbo 的服务。
+
+```java
+@Configuration
+@EnableDubbo(scanBasePackages = "com.alibaba.dubbo.samples.impl")
+static class ProviderConfiguration {
+    @Bean // #1
+    public ProviderConfig providerConfig() {
+        ProviderConfig providerConfig = new ProviderConfig();
+        providerConfig.setTimeout(1000);
+        return providerConfig;
+    }
+
+    @Bean // #2
+    public ApplicationConfig applicationConfig() {
+        ApplicationConfig applicationConfig = new ApplicationConfig();
+        applicationConfig.setName("dubbo-annotation-provider");
+        return applicationConfig;
+    }
+
+    @Bean // #3
+    public RegistryConfig registryConfig() {
+        RegistryConfig registryConfig = new RegistryConfig();
+        registryConfig.setProtocol("zookeeper");
+        registryConfig.setAddress("localhost");
+        registryConfig.setPort(2181);
+        return registryConfig;
+    }
+
+    @Bean // #4
+    public ProtocolConfig protocolConfig() {
+        ProtocolConfig protocolConfig = new ProtocolConfig();
+        protocolConfig.setName("dubbo");
+        protocolConfig.setPort(20880);
+        return protocolConfig;
+    }
+}
+```
+
+说明：
+
+- 通过 `@EnableDubbo` 指定在 `com.alibaba.dubbo.samples.impl` 下扫描所有标注有 `@Service` 的类
+- 通过 `@Configuration` 将 ProviderConfiguration 中所有的 `@Bean` 通过 Java Config 的方式组装出来并注入给 Dubbo 服务，也就是标注有 `@Service` 的类。这其中就包括了：
+  1. ProviderConfig：服务提供方配置
+  2. ApplicationConfig：应用配置
+  3. RegistryConfig：注册中心配置
+  4. ProtocolConfig：协议配置
+
+按照上面的方法，在使用过程中遇到了两个坑（dubbo版本2.7.2）：
+
+- 使用**@EnableDubbo**注解扫描不到路径
+
+  ```java
+  @EnableDubbo(scanBasePackages = "com.liuning.dubbo.service.impl")
+  ```
+
+  最后使用**@DubboComponentScan**注解成功
+
+  ```java
+  @DubboComponentScan(basePackages = "com.liuning.dubbo.service.impl")
+  ```
+
+- **RegistryConfig**配置出现问题，使用
+
+  ```java
+  registryConfig.setAddress("localhost");
+  registryConfig.setPort(2181);
+  ```
+
+  一直提示连接不了zookeeper注册中心，最后使用
+
+  ```javascript
+  registryConfig.setAddress("localhost:2181");
+  registryConfig.setPort(2181);
+  ```
+
+  则成功连接上zk注册中心，删掉`registryConfig.setPort(2181)`也可成功连接。
+
+这两个问题都是2.7.2版本下出现的，暂时搞不懂，希望后面深入后能找到答案。
 
 ### ZooKeeper
 
