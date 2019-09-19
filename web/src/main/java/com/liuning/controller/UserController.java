@@ -1,7 +1,7 @@
 package com.liuning.controller;
 
 import com.liuning.dubbo.entity.User;
-import com.liuning.dubbo.service.UserService;
+import com.liuning.dubbo.service.UserDubboService;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @Reference
-    private UserService userDubboService;
+    private UserDubboService userDubboService;
 
     @GetMapping("/world")
     public User getUser() {
