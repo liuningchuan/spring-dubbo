@@ -10,6 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>api</artifactId>
+    <version>1.0.0</version>
+    <groupId>com.liuning.api</groupId>
 
 
 </project>
