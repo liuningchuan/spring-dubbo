@@ -4,6 +4,11 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author liuning
+ * @date 2019-10-09
+ * @description 自定义filter
+ */
 @Configuration
 public class FilterConfiguration {
 

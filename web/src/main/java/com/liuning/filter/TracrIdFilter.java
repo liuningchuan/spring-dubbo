@@ -24,7 +24,7 @@ public class TracrIdFilter implements Filter {
         try {
             filterChain.doFilter(servletRequest,servletResponse);
         } finally {
-            clearADCAttrs();
+            clearMDCAttrs();
         }
     }
 
@@ -37,7 +37,7 @@ public class TracrIdFilter implements Filter {
         MDC.put("TRACE_ID", UUID.randomUUID().toString().replaceAll("-",""));
     }
 
-    private void clearADCAttrs() {
+    private void clearMDCAttrs() {
         MDC.remove("TRACE_ID");
     }
 }
