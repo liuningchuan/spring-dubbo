@@ -36,7 +36,6 @@ public class UserController {
         user.setUsername("LiuNing");
         user.setPassword("open1234");
         logger.info("result is {}", user);
-        return user;
-//        return userDubboService.saveUser(user);
+        return userDubboService.saveUser(user);
     }
 }
