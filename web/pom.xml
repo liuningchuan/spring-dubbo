@@ -65,8 +65,7 @@
             <version>2.6.1</version>
         </dependency>
 
-        <!--日志logback-->
-        <!--logback会包括logback-core和slf4j-api-->
+        <!--日志logback,包括logback-core和slf4j-api-->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
