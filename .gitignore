@@ -56,4 +56,4 @@ mvnw
 mvnw.cmd
 .mvn
 .DS_Store
-web/target
+spring-dubbo-web/target
