@@ -2,14 +2,20 @@ package com.liuning.controller;
 
 import com.liuning.dubbo.entity.User;
 import com.liuning.dubbo.service.UserDubboService;
+import com.liuning.mapper.UserMapper;
+import com.liuning.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("/demo")
@@ -21,9 +27,12 @@ public class UserController {
     @Reference
     private UserDubboService userDubboService;
 
+    @Autowired
+    UserService userService;
+
     @GetMapping("/world")
     @ApiOperation(value = "2323", notes = "2333")
-    public User getUser() {
+    public List<com.liuning.entity.User> getUser() {
 
         logger.trace("Hello World!");
         logger.debug("How are you today?");
@@ -36,6 +45,7 @@ public class UserController {
         user.setUsername("LiuNing");
         user.setPassword("open1234");
         logger.info("result is {}", user);
-        return userDubboService.saveUser(user);
+        return userService.selectAll();
+//        return userDubboService.saveUser(user);
     }
 }

@@ -18,6 +18,7 @@
     <modules>
         <module>spring-dubbo-api</module>
         <module>spring-dubbo-web</module>
+        <module>spring-dubbo-dao</module>
     </modules>
 
     <dependencies>
