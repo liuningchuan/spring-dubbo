@@ -11,8 +11,26 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DubboConfig {
 
-    @Value("${dubbo.adress}")
-    private String dubboAdress;
+    @Value("${dubbo.register.address}")
+    private String dubboRegisterAdress;
+
+    @Value("${dubbo.consumer.timeout:30000}")
+    private Integer consumerTimeout;
+    @Value("${dubbo.consumer.retries:-1}")
+    private Integer consumerRetries;
+
+    @Value("${dubbo.provider.timeout:30000}")
+    private Integer providerTimeout;
+
+    @Value("${dubbo.protocol.name:dubbo}")
+    private String protocolName;
+    @Value("${dubbo.protocol.port:20881}")
+    private Integer protocolPort;
+    @Value("${dubbo.protocol.threadPool:fixed}")
+    private String protocolThreadPool;
+    @Value("${dubbo.protocol.threads:200}")
+    private Integer protocolThreads;
+
 
     @Bean
     public ApplicationConfig applicationConfig() {
@@ -24,14 +42,16 @@ public class DubboConfig {
     @Bean
     public RegistryConfig registryConfig() {
         RegistryConfig registryConfig = new RegistryConfig();
-        registryConfig.setAddress(dubboAdress);
-        registryConfig.setTimeout(10000);
+        registryConfig.setAddress(dubboRegisterAdress);
+        registryConfig.setTimeout(providerTimeout);
         return registryConfig;
     }
 
     @Bean
     public ConsumerConfig consumerConfig() {
         ConsumerConfig consumerConfig = new ConsumerConfig();
+        consumerConfig.setTimeout(consumerTimeout);
+        consumerConfig.setRetries(consumerRetries);
         consumerConfig.setCheck(false);
         return consumerConfig;
     }
@@ -39,7 +59,10 @@ public class DubboConfig {
     @Bean
     public ProtocolConfig protocolConfig() {
         ProtocolConfig protocolConfig = new ProtocolConfig();
-        protocolConfig.setName("dubbo");
+        protocolConfig.setName(protocolName);
+        protocolConfig.setThreadpool(protocolThreadPool);
+        protocolConfig.setThreads(protocolThreads);
+        protocolConfig.setPort(protocolPort);
         return protocolConfig;
     }
 
