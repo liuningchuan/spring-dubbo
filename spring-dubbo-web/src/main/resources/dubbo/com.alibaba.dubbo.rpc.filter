@@ -1,1 +1,2 @@
 ptrace=com.liuning.filter.ProviderFilter
+ctrace=com.liuning.filter.ConsumerFilter

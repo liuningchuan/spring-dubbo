@@ -7,6 +7,9 @@ import org.slf4j.MDC;
 
 import java.util.UUID;
 
+/**
+ * 接收上游系统dubbo调用传入的TraceId并放入MDC码中
+ */
 @Activate(group = {"provider"}, order = -9999)
 public class ProviderFilter implements Filter {
 
@@ -15,7 +18,7 @@ public class ProviderFilter implements Filter {
 
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
-        String traceId = invocation.getAttachment("TRACEID");
+        String traceId = invocation.getAttachment("TRACE-ID");
         if (StringUtils.isBlank(traceId)) {
             traceId = UUID.randomUUID().toString().replaceAll("-", "");
         }
