@@ -5,14 +5,14 @@ public class AppException extends RuntimeException{
     /**
      * 异常码
      */
-    private String code;
+    private Integer code;
 
     /**
      * 异常信息
      */
     private String message;
 
-    public AppException(String code, String message) {
+    public AppException(Integer code, String message) {
         this.code = code;
         this.message = message;
     }
