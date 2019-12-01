@@ -2,6 +2,8 @@ package com.liuning.controller;
 
 import com.liuning.dubbo.entity.User;
 import com.liuning.dubbo.service.UserDubboService;
+import com.liuning.emum.StatusCode;
+import com.liuning.model.Result;
 import com.liuning.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -45,5 +47,19 @@ public class UserController {
         logger.info("result is {}", user);
         return userService.selectAll();
 //        return userDubboService.saveUser(user);
+    }
+
+    @RequestMapping("/result")
+    public Result result(){
+        return new Result(StatusCode.SUCCESS);
+    }
+
+    @RequestMapping("/result1")
+    public Result result1(){
+        User user = new User();
+        user.setEmail("599522516@qq.com");
+        user.setUsername("LiuNing");
+        user.setPassword("open1234");
+        return new Result<>(0, "请求成功", user);
     }
 }
