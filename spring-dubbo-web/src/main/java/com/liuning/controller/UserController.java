@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/demo")
-@Api(tags = "基础服务中心", value = "233")
+@Api(tags = "Base Controller", value = "233")
 public class UserController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -49,12 +49,14 @@ public class UserController {
 //        return userDubboService.saveUser(user);
     }
 
-    @RequestMapping("/result")
+    @GetMapping("/result")
+    @ApiOperation(value = "Result测试", notes = "返回成功")
     public Result result(){
         return new Result(StatusCode.SUCCESS);
     }
 
-    @RequestMapping("/result1")
+    @GetMapping("/result1")
+    @ApiOperation(value = "Result测试", notes = "返回数据")
     public Result result1(){
         User user = new User();
         user.setEmail("599522516@qq.com");
