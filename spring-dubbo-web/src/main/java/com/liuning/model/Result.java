@@ -1,7 +1,9 @@
 package com.liuning.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.liuning.emum.StatusCode;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Result<T> {
 
     private Integer code;
