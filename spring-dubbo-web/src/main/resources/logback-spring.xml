@@ -14,13 +14,39 @@
         %n:输出一个换行符号
     -->
     <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度 %msg：日志消息，%n是换行符-->
+    <property name="LOG_COMMON_PATTERN" value="%d{HH:mm:ss.SSS} %-5level [%X{TRACE_ID}] %logger{36} - %msg%n"/>
+
+    <!-- 日志文件路径 -->
+    <property name="LOG_HOME" value="/Users/liuning/tomcat/logs/spring-dubbo"/>
+
+    <!-- 日志文件大小,超过这个大小将被压缩 -->
+    <property scope="context" name="LOG_MAX_SIZE" source="log.maxsize" value="100MB"/>
+
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <Pattern>%d{HH:mm:ss.SSS} %-5level [%X{TRACE_ID}] %logger{36} - %msg%n</Pattern>
+            <Pattern>${LOG_COMMON_PATTERN}</Pattern>
         </layout>
     </appender>
 
+    <appender name="FILE_APP" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 按天轮转 -->
+            <fileNamePattern>${LOG_HOME}/app/app.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+            <!-- 保存30天的历史记录，最大大小为3GB -->
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>3GB</totalSizeCap>
+<!--            <maxFileSize>${LOG_MAX_SIZE}</maxFileSize>-->
+        </rollingPolicy>
+        <!--定义输出格式-->
+        <encoder>
+            <pattern>${LOG_COMMON_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 日志打印级别 -->
     <root level="info">
         <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE_APP" />
     </root>
 </configuration>
