@@ -14,7 +14,7 @@
         %n:输出一个换行符号
     -->
     <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度 %msg：日志消息，%n是换行符-->
-    <property name="LOG_COMMON_PATTERN" value="%d{HH:mm:ss.SSS} %-5level [%X{TRACE_ID}] %logger{36} - %msg%n"/>
+    <property name="LOG_COMMON_PATTERN" value="%d %-5level [%X{TRACE_ID}] %logger{36} - %msg%n"/>
 
     <!-- 日志文件路径 -->
     <property name="LOG_HOME" value="/Users/liuning/tomcat/logs/spring-dubbo"/>
