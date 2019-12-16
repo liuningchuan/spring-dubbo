@@ -28,6 +28,7 @@
         </layout>
     </appender>
 
+    <!-- INFO OR Greater-->
     <appender name="FILE_APP" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/app.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -36,9 +37,29 @@
             <!-- 保存30天的历史记录，最大大小为3GB -->
             <maxHistory>30</maxHistory>
             <totalSizeCap>3GB</totalSizeCap>
-<!--            <maxFileSize>${LOG_MAX_SIZE}</maxFileSize>-->
+            <!-- <maxFileSize>${LOG_MAX_SIZE}</maxFileSize>-->
         </rollingPolicy>
         <!--定义输出格式-->
+        <encoder>
+            <pattern>${LOG_COMMON_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- WARN and ERROR -->
+    <appender name="FILE_EXCEPTION" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+        <file>${LOG_HOME}/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>${LOG_HOME}/error/error-%d{yyyy-MM-dd}-%i.log.zip</fileNamePattern>
+            <maxHistory>100</maxHistory>
+            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 100MB -->
+                <MaxFileSize>${LOG_MAX_SIZE}</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
         <encoder>
             <pattern>${LOG_COMMON_PATTERN}</pattern>
         </encoder>
@@ -48,5 +69,6 @@
     <root level="info">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE_APP" />
+        <appender-ref ref="FILE_EXCEPTION"/>
     </root>
 </configuration>
