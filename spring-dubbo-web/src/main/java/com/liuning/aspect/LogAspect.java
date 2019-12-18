@@ -1,0 +1,65 @@
+package com.liuning.aspect;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@Aspect
+@Component
+public class LogAspect {
+
+    private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
+
+    @Pointcut("execution(* com.liuning.controller.*.*(..))")
+    public void LogAspect(){}
+
+    @Before("LogAspect()")
+    public void doBefore(JoinPoint joinPoint){
+        logger.info("Do Before");
+    }
+
+    @After("LogAspect()")
+    public void doAfter(JoinPoint joinPoint){
+        logger.info("doAfter");
+    }
+
+    /**
+     * AfterReturning在方法执行后返回一个结果后执行
+     */
+    @AfterReturning("LogAspect()")
+    public void doAfterReturning(JoinPoint joinPoint){
+        logger.info("doAfterReturning");
+    }
+
+    /**
+     * AfterThrowing在方法执行过程中抛出异常的时候执行
+     */
+    @AfterThrowing("LogAspect()")
+    public void deAfterThrowing(JoinPoint joinPoint){
+        logger.info("deAfterThrowing");
+    }
+
+    /**
+     * Around环绕通知，在执行前后都使用，这个方法参数必须为ProceedingJoinPoint
+     */
+    @Around("LogAspect()")
+    public Object deAround(ProceedingJoinPoint joinPoint) throws Throwable{
+        logger.info("Do around after");
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
+                .getRequestAttributes()).getRequest();
+        HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder
+                .getRequestAttributes()).getResponse();
+        Object object = joinPoint.proceed();
+        logger.info("Do around after");
+        return object;
+    }
+}
