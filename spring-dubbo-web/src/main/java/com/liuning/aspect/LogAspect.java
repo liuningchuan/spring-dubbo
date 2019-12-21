@@ -44,14 +44,7 @@ public class LogAspect {
     public void doAfterReturning(JoinPoint joinPoint) {
         logger.info("doAfterReturning");
         logExecutorService.submit(() -> {
-            for (int i = 0; i < 100; i++) {
-                System.out.println("23333333"+i);
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
+            logger.info("asynchronous thread");
         });
     }
 
