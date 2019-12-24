@@ -29,12 +29,14 @@ public class LogAspect {
 
     @Before("LogAspect()")
     public void doBefore(JoinPoint joinPoint) {
-        logger.info("Do Before");
+        Object[] args = joinPoint.getArgs();
+        logger.info("Request Paramters is {}", args);
     }
 
     @After("LogAspect()")
     public void doAfter(JoinPoint joinPoint) {
-        logger.info("doAfter");
+        Object[] args = joinPoint.getArgs();
+        logger.info("do {}", args);
     }
 
     /**
@@ -61,14 +63,17 @@ public class LogAspect {
      */
     @Around("LogAspect()")
     public Object deAround(ProceedingJoinPoint joinPoint) throws Throwable {
-        logger.info("Do around after");
+        logger.info("Do around before");
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
                 .getRequestAttributes()).getRequest();
         String apiName = request.getParameter("apiName");
         logger.info("apiName is : {}", apiName);
         HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder
                 .getRequestAttributes()).getResponse();
-        Object object = joinPoint.proceed();
+        Object[] args = joinPoint.getArgs();
+        logger.info("Request is {}", args);
+        Object object = joinPoint.proceed(args);
+        logger.info("Response is {}", object);
         logger.info("Do around after");
         return object;
     }
