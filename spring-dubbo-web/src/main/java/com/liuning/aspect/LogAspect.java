@@ -1,19 +1,19 @@
 package com.liuning.aspect;
 
+import com.liuning.concurrent.GenericThreadPoolExecutor;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 
 @Aspect
 @Component
@@ -21,7 +21,9 @@ public class LogAspect {
 
     private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
 
-    private static ExecutorService logExecutorService = Executors.newFixedThreadPool(10);
+    @Autowired
+    @Qualifier("threadPoolExecutor")
+    private GenericThreadPoolExecutor logExecutorService;
 
     @Pointcut("execution(* com.liuning.controller.*.*(..))")
     public void LogAspect() {
