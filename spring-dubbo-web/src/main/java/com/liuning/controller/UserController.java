@@ -65,4 +65,13 @@ public class UserController {
         return new Result<>(0, "请求成功", user);
     }
 
+    /**
+     * 直接返回字符串
+     * @return string
+     */
+    @GetMapping("/string")
+    public String getString() {
+        return "SUCCESS";
+    }
+
 }
