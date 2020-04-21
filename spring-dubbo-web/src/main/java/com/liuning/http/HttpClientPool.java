@@ -4,6 +4,7 @@ import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpRequest;
 import org.apache.http.NoHttpResponseException;
 import org.apache.http.client.HttpRequestRetryHandler;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
@@ -92,7 +93,15 @@ public class HttpClientPool {
             return !(request instanceof HttpEntityEnclosingRequest);
         };
 
+        // 配置请求的超时设置
+        RequestConfig requestConfig = RequestConfig.custom()
+                .setConnectionRequestTimeout(1000)
+                .setConnectTimeout(1000)
+                .setSocketTimeout(1000)
+                .build();
+
         return HttpClients.custom().setConnectionManager(cm)
+                .setDefaultRequestConfig(requestConfig)
                 .setRetryHandler(httpRequestRetryHandler)
                 .build();
     }
