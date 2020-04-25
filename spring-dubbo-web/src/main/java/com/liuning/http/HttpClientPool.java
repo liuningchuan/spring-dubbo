@@ -21,19 +21,27 @@ import javax.net.ssl.SSLHandshakeException;
 import java.io.InterruptedIOException;
 import java.net.UnknownHostException;
 
+/**
+ * HttpClient连接池管理
+ *
+ * @author liuning
+ * @since 2020-04-15
+ */
 public class HttpClientPool {
 
     private static CloseableHttpClient httpClient = null;
 
-    /**
-     * 总最大连接数
-     */
-    static final int maxTotal= 2;
+    //从连接池中获取连接超时时间
+    private static final int connectionRequestTimeout = 5000;
+    //建立连接超时时间
+    private static final int connectionTimeout = 5000;
+    //等待响应超时时间
+    private static final int socketTimeout = 30000;
 
-    /**
-     * 每条线路最大连接数 = 本系统核心线程数 , 这样永远不会超过最大连接
-     */
-    static final int defaultMaxPerRoute= 20;
+    //总最大连接数
+    static final int maxTotal= 500;
+    //每条线路最大连接数 = 本系统核心线程数 , 这样永远不会超过最大连接
+    static final int defaultMaxPerRoute= 100;
 
     public static CloseableHttpClient getHttpClient() {
         if (null == httpClient) {
@@ -95,9 +103,9 @@ public class HttpClientPool {
 
         // 配置请求的超时设置
         RequestConfig requestConfig = RequestConfig.custom()
-                .setConnectionRequestTimeout(1000)
-                .setConnectTimeout(1000)
-                .setSocketTimeout(1000)
+                .setConnectionRequestTimeout(connectionRequestTimeout)
+                .setConnectTimeout(connectionTimeout)
+                .setSocketTimeout(socketTimeout)
                 .build();
 
         return HttpClients.custom().setConnectionManager(cm)
