@@ -2,11 +2,13 @@ package com.liuning.http;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
@@ -15,6 +17,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,4 +96,29 @@ public class HttpClientAdapter {
             logger.error("HttpClient Post error");
         }
     }
+
+    public static String sendGet(String uriPath, List<NameValuePair> ns)
+            throws URISyntaxException, ClientProtocolException, IOException {
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        URIBuilder uri = new URIBuilder();
+        uri.setPath(uriPath);
+        uri.addParameters(ns);
+        URI u = uri.build();
+        HttpGet httpget = new HttpGet(u);
+        CloseableHttpResponse response = httpclient.execute(httpget);
+        return EntityUtils.toString(response.getEntity());
+    }
+
+    public static String sendPost(String uriPath, List<NameValuePair> ns)
+            throws URISyntaxException, ClientProtocolException, IOException {
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        URIBuilder uri = new URIBuilder();
+        uri.setPath(uriPath);
+        uri.addParameters(ns);
+        URI u = uri.build();
+        HttpPost httpPost = new HttpPost(u);
+        CloseableHttpResponse response = httpclient.execute(httpPost);
+        return EntityUtils.toString(response.getEntity());
+    }
+
 }
