@@ -110,7 +110,7 @@ public class HttpClientAdapter {
     }
 
     public static String sendPost(String uriPath, List<NameValuePair> ns)
-            throws URISyntaxException, ClientProtocolException, IOException {
+            throws URISyntaxException, IOException {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         URIBuilder uri = new URIBuilder();
         uri.setPath(uriPath);

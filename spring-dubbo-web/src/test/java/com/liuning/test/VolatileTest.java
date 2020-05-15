@@ -8,7 +8,7 @@ public class VolatileTest {
     private static volatile int race = 0;
 
     private static void increase() {
-        //race++不是院子操作
+        //race++不是原子操作
         race++;
     }
 
