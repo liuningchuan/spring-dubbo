@@ -1,7 +1,9 @@
 package com.liuning.test;
 
+import com.google.common.collect.Lists;
 import org.junit.Test;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 public class StreamTest {
@@ -15,5 +17,10 @@ public class StreamTest {
         int result2 = Stream.of(1, 2, 3, 4)
                 .reduce(100, Integer::sum);
         System.out.println(result2);
+
+        List<Integer> nums = Lists.newArrayList(1, 1, null, 2, 3, 4, null, 5, 6, 7, 8, 9, 10);
+        System.out.println("sum is:" + nums.stream().filter(num -> num != null).
+                distinct().mapToInt(num -> num * 2).
+                peek(System.out::println).skip(2).limit(4).sum());
     }
 }

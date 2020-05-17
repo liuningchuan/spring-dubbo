@@ -1,5 +1,6 @@
 package com.liuning.controller;
 
+import com.liuning.aspect.BusiLog;
 import com.liuning.dubbo.entity.User;
 import com.liuning.dubbo.service.UserDubboService;
 import com.liuning.emum.StatusCode;
@@ -32,6 +33,7 @@ public class UserController {
 
     @GetMapping("/world")
     @ApiOperation(value = "2323", notes = "2333")
+    @BusiLog(name = "测试接口")
     public List<com.liuning.entity.User> getUser() {
 
         logger.trace("Hello World!");

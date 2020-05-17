@@ -3,7 +3,9 @@ package com.liuning.aspect;
 import com.liuning.concurrent.GenericThreadPoolExecutor;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.lang.reflect.Method;
 
 @Aspect
 @Component
@@ -37,6 +40,14 @@ public class LogAspect {
 
     @After("LogAspect()")
     public void doAfter(JoinPoint joinPoint) {
+
+        Signature signature = joinPoint.getSignature();
+        MethodSignature methodSignature = (MethodSignature)signature;
+        Method targetMethod = methodSignature.getMethod();
+
+        BusiLog busiLog = targetMethod.getAnnotation(BusiLog.class);
+        logger.info("接口名称：" + busiLog.name());
+
         Object[] args = joinPoint.getArgs();
         logger.info("do {}", args);
     }
