@@ -41,11 +41,9 @@ public class LogAspect {
     @After("LogAspect()")
     public void doAfter(JoinPoint joinPoint) {
 
-        Signature signature = joinPoint.getSignature();
-        MethodSignature methodSignature = (MethodSignature)signature;
-        Method targetMethod = methodSignature.getMethod();
-
-        BusiLog busiLog = targetMethod.getAnnotation(BusiLog.class);
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        Method method = signature.getMethod();
+        BusiLog busiLog = method.getAnnotation(BusiLog.class);
         logger.info("接口名称：" + busiLog.name());
 
         Object[] args = joinPoint.getArgs();
@@ -73,14 +71,15 @@ public class LogAspect {
 
     /**
      * Around环绕通知，在执行前后都使用，这个方法参数必须为ProceedingJoinPoint
+     * 从BusiLog注解中获取调用接口名称
      */
-    @Around("LogAspect()")
-    public Object deAround(ProceedingJoinPoint joinPoint) throws Throwable {
+    @Around("LogAspect()&&@annotation(log)")
+    public Object deAround(ProceedingJoinPoint joinPoint, BusiLog log) throws Throwable {
         logger.info("Do around before");
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
                 .getRequestAttributes()).getRequest();
         String apiName = request.getParameter("apiName");
-        logger.info("apiName is : {}", apiName);
+        logger.info("apiName is : {}, interface is {}", apiName, log.name());
         HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder
                 .getRequestAttributes()).getResponse();
         Object[] args = joinPoint.getArgs();
