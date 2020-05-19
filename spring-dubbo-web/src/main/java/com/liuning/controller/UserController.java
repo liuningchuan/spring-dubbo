@@ -4,7 +4,6 @@ import com.liuning.aspect.BusiLog;
 import com.liuning.dubbo.entity.User;
 import com.liuning.dubbo.service.UserDubboService;
 import com.liuning.emum.StatusCode;
-import com.liuning.mapper.UserMapper;
 import com.liuning.model.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
