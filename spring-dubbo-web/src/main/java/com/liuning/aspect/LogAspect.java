@@ -1,5 +1,6 @@
 package com.liuning.aspect;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.liuning.concurrent.GenericThreadPoolExecutor;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -75,7 +76,6 @@ public class LogAspect {
      */
     @Around("LogAspect()&&@annotation(log)")
     public Object deAround(ProceedingJoinPoint joinPoint, BusiLog log) throws Throwable {
-        logger.info("Do around before");
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
                 .getRequestAttributes()).getRequest();
         String apiName = request.getParameter("apiName");
@@ -83,10 +83,10 @@ public class LogAspect {
         HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder
                 .getRequestAttributes()).getResponse();
         Object[] args = joinPoint.getArgs();
-        logger.info("Request is {}", args);
+        ObjectMapper objectMapper = new ObjectMapper();
+        logger.info("Request is {}", objectMapper.writeValueAsString(args));
         Object object = joinPoint.proceed(args);
-        logger.info("Response is {}", object);
-        logger.info("Do around after");
+        logger.info("Response is {}", objectMapper.writeValueAsString(object));
         return object;
     }
 }
