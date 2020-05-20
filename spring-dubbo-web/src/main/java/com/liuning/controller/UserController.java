@@ -1,18 +1,18 @@
 package com.liuning.controller;
 
 import com.liuning.aspect.BusiLog;
-import com.liuning.dubbo.entity.User;
+import com.liuning.entity.User;
 import com.liuning.dubbo.service.UserDubboService;
 import com.liuning.emum.StatusCode;
+import com.liuning.entity.UserExample;
+import com.liuning.mapper.UserMapper;
 import com.liuning.model.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
 @Api(tags = "Base Controller", value = "233")
 public class UserController {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+    private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
     @Reference
     private UserDubboService userDubboService;
@@ -30,24 +30,15 @@ public class UserController {
     @Resource
     UserMapper userMapper;
 
-    @GetMapping("/world")
+    @GetMapping("/world/{start}/{end}")
     @ApiOperation(value = "2323", notes = "2333")
     @BusiLog(name = "测试接口")
-    public List<com.liuning.entity.User> getUser() {
+    public List<User> getUser(@PathVariable int start, @PathVariable int end) {
 
-        logger.trace("Hello World!");
-        logger.debug("How are you today?");
-        logger.info("I am fine.");
-        logger.warn("I love programming.");
-        logger.error("I am programming.");
-
-        User user = new User();
-        user.setEmail("599522516@qq.com");
-        user.setUsername("LiuNing");
-        user.setPassword("open1234");
-        logger.info("result is {}", user);
-        return userMapper.selectAll();
-//        return userDubboService.saveUser(user);
+        log.info("start is {}, end is {}", start, end);
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andIdBetween(start, end);
+        return userMapper.selectByExample(userExample);
     }
 
     @GetMapping("/result")
@@ -61,7 +52,7 @@ public class UserController {
     public Result result1(){
         User user = new User();
         user.setEmail("599522516@qq.com");
-        user.setUsername("LiuNing");
+        user.setName("LiuNing");
         user.setPassword("open1234");
         return new Result<>(0, "请求成功", user);
     }
