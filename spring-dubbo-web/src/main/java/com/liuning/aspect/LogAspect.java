@@ -18,6 +18,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
+import java.util.Objects;
 
 @Aspect
 @Component
@@ -76,8 +77,8 @@ public class LogAspect {
      */
     @Around("LogAspect()&&@annotation(log)")
     public Object deAround(ProceedingJoinPoint joinPoint, BusiLog log) throws Throwable {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
-                .getRequestAttributes()).getRequest();
+        HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest();
         String apiName = request.getParameter("apiName");
         logger.info("apiName is : {}, interface is {}", apiName, log.name());
         HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder
