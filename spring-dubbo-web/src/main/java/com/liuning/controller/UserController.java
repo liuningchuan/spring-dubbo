@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -33,7 +34,9 @@ public class UserController {
     @GetMapping("/world/{start}/{end}")
     @ApiOperation(value = "2323", notes = "2333")
     @BusiLog(name = "测试接口")
-    public List<User> getUser(@PathVariable int start, @PathVariable int end) {
+    public List<User> getUser(@PathVariable int start, @PathVariable int end, @RequestParam(required = false) String name) {
+
+        Assert.notNull(name, "URI is required");
 
         log.info("start is {}, end is {}", start, end);
         UserExample userExample = new UserExample();

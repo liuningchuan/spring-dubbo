@@ -23,6 +23,10 @@ public class FunctionInterfaceTest {
             userExample.createCriteria().andIdBetween(0, 2);
             System.out.println(userMapper.selectByExample(userExample));
         });
+
+        FunctionTest test = () -> System.out.println("Test again");
+        test.doExecute();
+        test.defaultMethod();
     }
 
     public void test(FunctionTest function) {
