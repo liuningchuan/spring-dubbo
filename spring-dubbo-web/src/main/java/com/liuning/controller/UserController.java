@@ -3,7 +3,7 @@ package com.liuning.controller;
 import com.liuning.aspect.BusiLog;
 import com.liuning.entity.User;
 import com.liuning.dubbo.service.UserDubboService;
-import com.liuning.emum.StatusCode;
+import com.liuning.enums.ErrorCodeEnums;
 import com.liuning.entity.UserExample;
 import com.liuning.mapper.UserMapper;
 import com.liuning.model.Result;
@@ -47,7 +47,7 @@ public class UserController {
     @GetMapping("/result")
     @ApiOperation(value = "Result测试", notes = "返回成功")
     public Result result(){
-        return new Result(StatusCode.SUCCESS);
+        return new Result(ErrorCodeEnums.SUCCESS);
     }
 
     @GetMapping("/result1")
@@ -57,7 +57,7 @@ public class UserController {
         user.setEmail("599522516@qq.com");
         user.setName("LiuNing");
         user.setPassword("open1234");
-        return new Result<>(0, "请求成功", user);
+        return new Result<>("0000000", "请求成功", user);
     }
 
     /**
