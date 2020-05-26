@@ -6,5 +6,8 @@ import java.lang.annotation.*;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface BusiLog {
+
     String name() default "";
+
+    boolean ignore() default false;
 }

@@ -46,7 +46,9 @@ public class LogAspect {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
         BusiLog busiLog = method.getAnnotation(BusiLog.class);
-        logger.info("接口名称：" + busiLog.name());
+        if (!busiLog.ignore()) {
+            logger.info("接口名称：" + busiLog.name());
+        }
 
         Object[] args = joinPoint.getArgs();
         logger.info("do {}", args);

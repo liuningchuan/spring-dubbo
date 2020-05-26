@@ -33,7 +33,7 @@ public class UserController {
 
     @GetMapping("/world/{start}/{end}")
     @ApiOperation(value = "2323", notes = "2333")
-    @BusiLog(name = "测试接口")
+    @BusiLog(name = "测试接口",ignore = true)
     public List<User> getUser(@PathVariable int start, @PathVariable int end, @RequestParam(required = false) String name) {
 
         Assert.notNull(name, "URI is required");
