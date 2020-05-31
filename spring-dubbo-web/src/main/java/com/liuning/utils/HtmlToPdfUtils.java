@@ -1,8 +1,10 @@
 package com.liuning.utils;
 
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.BaseFont;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.xhtmlrenderer.pdf.ITextFontResolver;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 
 import java.io.File;
@@ -12,6 +14,12 @@ import java.io.OutputStream;
 
 /**
  * Utils - html转换成PDF
+ * 只需要引入依赖:
+ * <dependency>
+ * <groupId>org.xhtmlrenderer</groupId>
+ * <artifactId>flying-saucer-pdf-itext5</artifactId>
+ * <version>9.0.3</version>
+ * </dependency>
  *
  * @author liuning
  * @date 2020-05-30 23:03
@@ -36,6 +44,13 @@ public class HtmlToPdfUtils {
 
             ITextRenderer iTextRenderer = new ITextRenderer();
             iTextRenderer.setDocumentFromString(text);
+
+            //解决中文字体，需要单独下载字体
+            //同时在前端样式中加入font-family:SimSun;
+            ITextFontResolver fontResolver = iTextRenderer.getFontResolver();
+            fontResolver.addFont(ClassLoader.getSystemClassLoader().getResource("font/simsun.ttc").getPath(),
+                    BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+
             iTextRenderer.layout();
             iTextRenderer.createPDF(outputStream);
 
@@ -81,7 +96,7 @@ public class HtmlToPdfUtils {
                 "    <meta charset=\"utf-8\"/>" +
                 "    <title>FreeMarker</title>" +
                 "</head>" +
-                "<body>" +
+                "<body style=\"font-family: SimSun,serif\">" +
                 "<p><input type=\"checkbox\" checked=\"checked\" disabled=\"disabled\" name=\"vehicle\" value=\"Bike\" /> I have a bike</p>" +
                 "<h1>hello world刘宁233333</h1>" +
                 "<h1 style=\"color: red\">${name}</h1>" +
