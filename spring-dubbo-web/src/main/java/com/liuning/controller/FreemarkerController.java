@@ -12,6 +12,6 @@ class FreemarkerController {
     @BusiLog(name = "Freemarker测试接口", ignore = true)
     public String index(Model model){
         model.addAttribute("name","hello pillar");
-        return "index";
+        return "index.ftl";
     }
 }
