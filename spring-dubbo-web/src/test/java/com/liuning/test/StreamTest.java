@@ -22,5 +22,10 @@ public class StreamTest {
         System.out.println("sum is:" + nums.stream().filter(num -> num != null).
                 distinct().mapToInt(num -> num * 2).
                 peek(System.out::println).skip(2).limit(4).sum());
+
+        System.out.println("core size is : " + Runtime.getRuntime().availableProcessors());
+        System.out.println("free memory is : " + Runtime.getRuntime().freeMemory());
+        System.out.println("total mempry is : " + Runtime.getRuntime().totalMemory());
+        System.out.println("max memory is : " + Runtime.getRuntime().maxMemory() / (1024.0 * 1024.0 * 1024.0) + " GB");
     }
 }
