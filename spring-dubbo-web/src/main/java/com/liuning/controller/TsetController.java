@@ -19,11 +19,11 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/demo")
-@Api(tags = "Base Controller", value = "233")
-public class UserController {
+@RequestMapping("/test")
+@Api(tags = "Base Controller", value = "测试接口")
+public class TsetController {
 
-    private static final Logger log = LoggerFactory.getLogger(UserController.class);
+    private static final Logger log = LoggerFactory.getLogger(TsetController.class);
 
     @Reference
     private UserDubboService userDubboService;
