@@ -4,12 +4,10 @@ import com.liuning.dao.entity.User;
 import com.liuning.dao.entity.UserExample;
 import com.liuning.dao.mapper.UserMapper;
 import com.liuning.web.aspect.BusiLog;
-import com.liuning.web.dubbo.service.UserDubboService;
 import com.liuning.web.enums.ErrorCodeEnums;
 import com.liuning.dto.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.dubbo.config.annotation.Reference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
@@ -24,9 +22,6 @@ import java.util.List;
 public class TestController {
 
     private static final Logger log = LoggerFactory.getLogger(TestController.class);
-
-    @Reference
-    private UserDubboService userDubboService;
 
     @Resource
     UserMapper userMapper;
