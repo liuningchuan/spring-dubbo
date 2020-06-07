@@ -1,7 +1,7 @@
 package com.liuning.test;
 
-import com.liuning.StartApplication;
-import com.liuning.http.HttpClientAdapter;
+import com.liuning.web.StartApplication;
+import com.liuning.web.http.HttpClientAdapter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -19,6 +19,8 @@
         <module>spring-dubbo-api</module>
         <module>spring-dubbo-web</module>
         <module>spring-dubbo-dao</module>
+        <module>spring-dubbo-service</module>
+        <module>spring-dubbo-dto</module>
     </modules>
 
     <dependencies>
@@ -40,6 +42,32 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <!--统一管理项目的版本号，确保应用的各个项目的依赖和版本一致-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.liuning.dao</groupId>
+                <artifactId>spring-dubbo-dao</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.liuning.api</groupId>
+                <artifactId>spring-dubbo-api</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.liuning.service</groupId>
+                <artifactId>spring-dubbo-service</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.liuning.dto</groupId>
+                <artifactId>spring-dubbo-dto</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>

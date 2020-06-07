@@ -1,9 +1,9 @@
 package com.liuning.test;
 
 import com.itextpdf.text.DocumentException;
-import com.liuning.StartApplication;
-import com.liuning.itext.PDFConvertor;
-import com.liuning.itext.PDFGenerator;
+import com.liuning.web.StartApplication;
+import com.liuning.web.itext.PDFConvertor;
+import com.liuning.web.itext.PDFGenerator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
