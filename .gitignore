@@ -56,5 +56,5 @@ mvnw
 mvnw.cmd
 .mvn
 .DS_Store
-spring-dubbo-web/target
-spring-dubbo-dao/target
+spring-prometheus-web/target
+spring-prometheus-dao/target

@@ -12,16 +12,16 @@
     </parent>
 
     <groupId>com.liuning</groupId>
-    <artifactId>spring-dubbo</artifactId>
+    <artifactId>spring-prometheus</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>spring-dubbo-api</module>
-        <module>spring-dubbo-web</module>
-        <module>spring-dubbo-dao</module>
-        <module>spring-dubbo-service</module>
-        <module>spring-dubbo-dto</module>
-        <module>spring-dubbo-common</module>
+        <module>spring-prometheus-api</module>
+        <module>spring-prometheus-web</module>
+        <module>spring-prometheus-dao</module>
+        <module>spring-prometheus-service</module>
+        <module>spring-prometheus-dto</module>
+        <module>spring-prometheus-common</module>
     </modules>
 
     <dependencies>
@@ -50,27 +50,27 @@
         <dependencies>
             <dependency>
                 <groupId>com.liuning</groupId>
-                <artifactId>spring-dubbo-dao</artifactId>
+                <artifactId>spring-prometheus-dao</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.liuning</groupId>
-                <artifactId>spring-dubbo-api</artifactId>
+                <artifactId>spring-prometheus-api</artifactId>
                 <version>1.0.0</version>
             </dependency>
             <dependency>
                 <groupId>com.liuning</groupId>
-                <artifactId>spring-dubbo-service</artifactId>
+                <artifactId>spring-prometheus-service</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.liuning</groupId>
-                <artifactId>spring-dubbo-dto</artifactId>
+                <artifactId>spring-prometheus-dto</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.liuning</groupId>
-                <artifactId>spring-dubbo-common</artifactId>
+                <artifactId>spring-prometheus-common</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
         </dependencies>
