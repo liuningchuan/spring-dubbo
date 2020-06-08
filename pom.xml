@@ -43,26 +43,27 @@
         </dependency>
     </dependencies>
 
-    <!--统一管理项目的版本号，确保应用的各个项目的依赖和版本一致-->
+    <!--统一管理项目的版本号，确保应用的各个项目的依赖和版本一致
+    dependencyManagement里只是声明依赖，并不实现引入，因此子项目需要显示的声明需要用的依赖-->
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.liuning.dao</groupId>
+                <groupId>com.liuning</groupId>
                 <artifactId>spring-dubbo-dao</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>com.liuning.api</groupId>
+                <groupId>com.liuning</groupId>
                 <artifactId>spring-dubbo-api</artifactId>
                 <version>1.0.0</version>
             </dependency>
             <dependency>
-                <groupId>com.liuning.service</groupId>
+                <groupId>com.liuning</groupId>
                 <artifactId>spring-dubbo-service</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>com.liuning.dto</groupId>
+                <groupId>com.liuning</groupId>
                 <artifactId>spring-dubbo-dto</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>

@@ -10,7 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spring-dubbo-dao</artifactId>
-    <groupId>com.liuning.dao</groupId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>

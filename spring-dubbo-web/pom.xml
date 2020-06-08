@@ -15,15 +15,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.liuning.dao</groupId>
+            <groupId>com.liuning</groupId>
             <artifactId>spring-dubbo-dao</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.liuning.api</groupId>
+            <groupId>com.liuning</groupId>
             <artifactId>spring-dubbo-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.liuning.service</groupId>
+            <groupId>com.liuning</groupId>
             <artifactId>spring-dubbo-service</artifactId>
         </dependency>
 
