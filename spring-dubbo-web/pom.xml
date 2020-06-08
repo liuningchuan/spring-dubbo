@@ -26,6 +26,10 @@
             <groupId>com.liuning</groupId>
             <artifactId>spring-dubbo-service</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.liuning</groupId>
+            <artifactId>spring-dubbo-common</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.dubbo</groupId>
@@ -114,7 +118,6 @@
             <artifactId>flying-saucer-pdf-itext5</artifactId>
             <version>9.1.20</version>
         </dependency>
-
 
 
     </dependencies>

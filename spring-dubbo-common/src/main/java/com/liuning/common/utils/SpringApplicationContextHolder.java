@@ -1,4 +1,4 @@
-package com.liuning.web.utils;
+package com.liuning.common.utils;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

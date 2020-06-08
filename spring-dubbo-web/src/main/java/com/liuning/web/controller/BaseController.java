@@ -1,8 +1,8 @@
 package com.liuning.web.controller;
 
+import com.liuning.common.utils.SpringApplicationContextHolder;
 import com.liuning.dto.Result;
 import com.liuning.service.BaseService;
-import com.liuning.web.utils.SpringApplicationContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,6 +1,12 @@
-package com.liuning.web.enums;
+package com.liuning.common.enums;
 
-public enum ErrorCodeEnums {
+/**
+ * @author: liuning
+ * @description: 错误码枚举
+ * @create: 2020-06-08 22:39
+ * @version: 1.0
+ */
+public enum ErrorCode {
 
     SUCCESS("000000","请求成功"),
     FAIL("1","失败"),
@@ -9,7 +15,7 @@ public enum ErrorCodeEnums {
     private String code;
     private String message;
 
-    ErrorCodeEnums(String code, String message) {
+    ErrorCode(String code, String message) {
         this.code = code;
         this.message = message;
     }
@@ -31,3 +37,4 @@ public enum ErrorCodeEnums {
     }
 
 }
+

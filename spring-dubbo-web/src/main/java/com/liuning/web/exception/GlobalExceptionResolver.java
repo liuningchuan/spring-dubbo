@@ -1,5 +1,6 @@
 package com.liuning.web.exception;
 
+import com.liuning.common.exception.AppException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 /**

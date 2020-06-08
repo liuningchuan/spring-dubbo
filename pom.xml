@@ -21,6 +21,7 @@
         <module>spring-dubbo-dao</module>
         <module>spring-dubbo-service</module>
         <module>spring-dubbo-dto</module>
+        <module>spring-dubbo-common</module>
     </modules>
 
     <dependencies>
@@ -65,6 +66,11 @@
             <dependency>
                 <groupId>com.liuning</groupId>
                 <artifactId>spring-dubbo-dto</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.liuning</groupId>
+                <artifactId>spring-dubbo-common</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
         </dependencies>

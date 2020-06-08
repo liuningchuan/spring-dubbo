@@ -1,10 +1,10 @@
 package com.liuning.web.controller;
 
+import com.liuning.common.enums.ErrorCode;
 import com.liuning.dao.entity.User;
 import com.liuning.dao.entity.UserExample;
 import com.liuning.dao.mapper.UserMapper;
 import com.liuning.web.aspect.BusiLog;
-import com.liuning.web.enums.ErrorCodeEnums;
 import com.liuning.dto.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -42,7 +42,7 @@ public class TestController {
     @GetMapping("/result")
     @ApiOperation(value = "Result测试", notes = "返回成功")
     public Result result(){
-        return new Result(ErrorCodeEnums.SUCCESS.getCode(), ErrorCodeEnums.SUCCESS.getMessage());
+        return new Result(ErrorCode.SUCCESS.getCode(), ErrorCode.SUCCESS.getMessage());
     }
 
     @PostMapping("/result")
