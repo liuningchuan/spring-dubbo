@@ -38,6 +38,18 @@ public class Result<T> implements Serializable {
         this.data = data;
     }
 
+    public static <T> Result<T> success() {
+        return success(null);
+    }
+
+    public static <T> Result<T> success(T data) {
+        Result<T> result = new Result<>();
+        result.setCode("000000");
+        result.setMessage("请求成功");
+        result.setData(data);
+        return result;
+    }
+
     public String getCode() {
         return code;
     }

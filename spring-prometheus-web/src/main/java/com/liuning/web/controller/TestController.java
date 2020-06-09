@@ -41,15 +41,16 @@ public class TestController {
 
     @GetMapping("/result")
     @ApiOperation(value = "Result测试", notes = "返回成功")
+    @BusiLog(name = "测试接口",ignore = true)
     public Result result(){
-        return new Result(ErrorCode.SUCCESS.getCode(), ErrorCode.SUCCESS.getMessage());
+        return Result.success();
     }
 
     @PostMapping("/result")
     @ApiOperation(value = "Result测试", notes = "返回数据")
     @BusiLog(name = "测试接口",ignore = true)
     public Result<User> result1(@RequestBody User user){
-        return new Result<>("0000000", "请求成功", user);
+        return Result.success(user);
     }
 
     /**
