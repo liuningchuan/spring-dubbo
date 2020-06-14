@@ -45,20 +45,14 @@
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.4.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
                 <configuration>
-                    <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
-                    <verbose>true</verbose>
-                    <overwrite>true</overwrite>
+                    <skip>true</skip>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-deploy-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    <skip>true</skip>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
         </plugins>
     </build>
 

@@ -2,13 +2,33 @@ package com.liuning.dao.entity;
 
 import java.io.Serializable;
 
+/**
+ * @table user
+ * @author liuning
+ */
 public class User implements Serializable {
+    /**
+     * 列名：id
+     * 描述：自增id
+     */
     private Integer id;
 
+    /**
+     * 列名：email
+     * 描述：邮箱
+     */
     private String email;
 
+    /**
+     * 列名：name
+     * 描述：姓名
+     */
     private String name;
 
+    /**
+     * 列名：password
+     * 描述：密码
+     */
     private String password;
 
     private static final long serialVersionUID = 1L;
@@ -47,16 +67,14 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", email=").append(email);
-        sb.append(", name=").append(name);
-        sb.append(", password=").append(password);
-        sb.append("]");
-        return sb.toString();
+        return getClass().getSimpleName() +
+                " [" +
+                "Hash = " + hashCode() +
+                ", id=" + id +
+                ", email=" + email +
+                ", name=" + name +
+                ", password=" + password +
+                "]";
     }
 
     @Override

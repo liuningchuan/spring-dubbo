@@ -3,7 +3,6 @@ package com.liuning.dao.mapper;
 import com.liuning.dao.entity.User;
 import com.liuning.dao.entity.UserExample;
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {

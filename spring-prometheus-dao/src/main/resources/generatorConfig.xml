@@ -5,17 +5,16 @@
 
 <generatorConfiguration>
     <!--配置要链接的数据库的数据源-->
-    <classPathEntry location="/Users/liuning/Documents/mysql-connector-java-5.1.46.jar"/>
-    <!---Mybatis上下文
-    context中将targetRuntime配置为MyBatis3时，MBG会生成和Example相关的对象和方法
-    -->
+    <!--<classPathEntry location="/Users/liuning/Documents/mysql-connector-java-5.1.46.jar"/>-->
+    <!---Mybatis上下文context中将targetRuntime配置为MyBatis3时，MBG会生成和Example相关的对象和方法-->
     <context id="MySqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
         <!-- 自动生成tostring方法 -->
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
         <!-- 自动生成equals方法和hashcode方法 -->
         <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
-        <commentGenerator>
+        <plugin type="com.liuning.dao.plugin.MergeablePlugin"/>
+        <commentGenerator type="com.liuning.dao.plugin.CommentGeneratorPlugin">
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
             <property name="suppressAllComments" value="true"/>
             <!--阻止生成的注释包含时间戳-->
@@ -27,26 +26,22 @@
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/liuning" userId="root"
                         password="open12345"/>
-        <!--
-        默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer
-            true，把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal
-        -->
-        <javaTypeResolver>
-            <property name="forceBigDecimals" value="false"/>
-        </javaTypeResolver>
+
+        <javaTypeResolver type="com.liuning.dao.plugin.JavaTypeResovlerPlugin"/>
+
         <!--实体类生成信息-->
-        <javaModelGenerator targetPackage="com.liuning.entity" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.liuning.dao.entity" targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="true"/>
             <!-- 从数据库返回的值被清理前后的空格 -->
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!--mybatis 的xml文件地址-->
-        <sqlMapGenerator targetPackage="com.liuning.mapper" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="com.liuning.dao.mapper" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--mybatis的mapper接口-->
-        <javaClientGenerator targetPackage="com.liuning.mapper" targetProject="src/main/java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="com.liuning.dao.mapper" targetProject="src/main/java" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--要生成的表结构-->
