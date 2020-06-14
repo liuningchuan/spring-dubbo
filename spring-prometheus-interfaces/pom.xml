@@ -9,8 +9,8 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-prometheus-api</artifactId>
-    <name>spring-prometheus-api ${project.version}</name>
+    <artifactId>spring-prometheus-interfaces</artifactId>
+    <name>spring-prometheus-interfaces ${project.version}</name>
     <packaging>jar</packaging>
 
 </project>

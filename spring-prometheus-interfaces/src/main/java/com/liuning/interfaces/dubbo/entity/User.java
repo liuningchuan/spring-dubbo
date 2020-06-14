@@ -1,4 +1,4 @@
-package com.liuning.api.dubbo.entity;
+package com.liuning.interfaces.dubbo.entity;
 
 import java.io.Serializable;
 

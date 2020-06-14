@@ -21,7 +21,7 @@
         </dependency>
         <dependency>
             <groupId>com.liuning</groupId>
-            <artifactId>spring-prometheus-api</artifactId>
+            <artifactId>spring-prometheus-interfaces</artifactId>
         </dependency>
         <dependency>
             <groupId>com.liuning</groupId>
