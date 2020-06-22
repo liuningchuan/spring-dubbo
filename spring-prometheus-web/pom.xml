@@ -80,7 +80,7 @@
 <!--                </exclusion>-->
 <!--            </exclusions>-->
 <!--        </dependency>-->
-        <!--swaggr2-->
+        <!--swagger2-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>

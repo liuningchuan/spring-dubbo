@@ -1,5 +1,7 @@
 package com.liuning.interfaces.impl.account;
 
+import com.liuning.interfaces.account.entity.AccountOpenReqDto;
+import com.liuning.interfaces.account.entity.AccountOpenResDto;
 import com.liuning.interfaces.account.service.AccountDubboService;
 
 /**
@@ -9,4 +11,9 @@ import com.liuning.interfaces.account.service.AccountDubboService;
  * @version: 1.0
  */
 public class AccountDubboServiceImpl implements AccountDubboService {
+
+    @Override
+    public AccountOpenResDto accountOpen(AccountOpenReqDto req) {
+        return null;
+    }
 }

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 
 @RunWith(SpringRunner.class)
@@ -19,7 +20,7 @@ public class PDFTest {
     @Autowired
     PDFConvertor pdfConvertor;
 
-    @Autowired
+    @Resource
     PDFGenerator pdfGenerator;
 
     @Test
