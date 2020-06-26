@@ -50,6 +50,13 @@ public class Result<T> implements Serializable {
         return result;
     }
 
+    public static <T> Result<T> fail(String code, String desc) {
+        Result<T> result = new Result<>();
+        result.setCode(code);
+        result.setMessage(desc);
+        return result;
+    }
+
     public String getCode() {
         return code;
     }
