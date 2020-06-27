@@ -1,5 +1,6 @@
 package com.liuning.web.exception;
 
+import com.liuning.common.enums.ErrorCode;
 import com.liuning.common.exception.AppException;
 import com.liuning.dto.Result;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 全局异常处理
+ *
  * @author liuning
  * @date 2019-10-01 23:27
  */
@@ -21,13 +23,14 @@ public class GlobalExceptionResolver {
     @ExceptionHandler(value = AppException.class)
     @ResponseBody
     public Result<?> AppException(AppException e) {
-        log.warn("接口调用失败：",e);
-        return Result.fail(e.getCode(),e.getMessage());
+        log.warn("接口调用失败：", e);
+        return Result.fail(e.getCode(), e.getMessage());
     }
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public Result<?> Exception(Exception e) {
-        return Result.fail("999999","系统异常");
+        log.error("接口调用异常", e);
+        return Result.fail(ErrorCode.SYSTEM_ERROR.getCode(), ErrorCode.SYSTEM_ERROR.getMessage());
     }
 }

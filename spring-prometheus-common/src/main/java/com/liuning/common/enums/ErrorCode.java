@@ -10,7 +10,8 @@ public enum ErrorCode {
 
     SUCCESS("000000","请求成功"),
     FAIL("1","失败"),
-    PARAM_ERROR("100100", "参数校验失败");
+    PARAM_ERROR("100100", "参数校验失败"),
+    SYSTEM_ERROR("999999","系统异常");
 
     private String code;
     private String message;
