@@ -37,14 +37,15 @@ public class ParallelProcessor<T> {
             long start = System.currentTimeMillis();
             CountDownLatch countDownLatch = new CountDownLatch(checkers.size());
 
-            checkers.keySet().forEach(desc -> {
-                newFixedThreadPool.execute(() -> {
-                    log.info("开始进行校验：{}", desc);
-                    checkers.get(desc).accept(context);
-                    log.info("完成执行校验：{}", desc);
-                });
-                countDownLatch.countDown();}
-            );
+            checkers.keySet().forEach(desc -> newFixedThreadPool.execute(() -> {
+                    try {
+                        log.info("开始进行校验：{}", desc);
+                        checkers.get(desc).accept(context);
+                        log.info("完成执行校验：{}", desc);
+                    } finally {
+                        countDownLatch.countDown();
+                    }
+                }));
             countDownLatch.await();
             long cost = System.currentTimeMillis() - start;
             log.info("cost is :" + cost);
