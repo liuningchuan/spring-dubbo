@@ -1,5 +1,7 @@
 package com.liuning.test;
 
+import com.liuning.common.utils.SnowflakeId;
+
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -55,5 +57,9 @@ public class VolatileTest {
         countDownLatch.await();
         System.out.println("race is : " + race);
         System.out.println("number is : " + number);
+
+        System.out.println(new SnowflakeId().nextId());
+        System.out.println(Long.MAX_VALUE);
+        System.out.println(Long.MIN_VALUE);
     }
 }

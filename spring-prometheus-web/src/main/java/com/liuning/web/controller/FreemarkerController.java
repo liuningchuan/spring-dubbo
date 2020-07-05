@@ -1,6 +1,6 @@
 package com.liuning.web.controller;
 
-import com.liuning.common.enums.ErrorCode;
+import com.liuning.common.enums.ErrorCodeEnum;
 import com.liuning.common.exception.AppException;
 import com.liuning.common.utils.ValidationUtils;
 import com.liuning.dto.Request;
@@ -9,11 +9,9 @@ import com.liuning.dto.trade.TradeDetailQueryReqDto;
 import com.liuning.dto.trade.TradeDetailQueryResDto;
 import com.liuning.web.aspect.BusiLog;
 import com.liuning.web.concurrent.ParallelProcessor;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.HashMap;
 
 @RestController
@@ -45,19 +43,19 @@ class FreemarkerController {
 
     private void checkService(Request<TradeDetailQueryReqDto> tradeDetailQueryReqDtoRequest) {
         if (!tradeDetailQueryReqDtoRequest.getService().equals("trade")) {
-            throw new AppException(ErrorCode.PARAM_ERROR.getCode(), ErrorCode.PARAM_ERROR.getMessage());
+            throw new AppException(ErrorCodeEnum.PARAM_ERROR.getCode(), ErrorCodeEnum.PARAM_ERROR.getMessage());
         }
     }
 
     private void checkClientSrial(Request<TradeDetailQueryReqDto> tradeDetailQueryReqDtoRequest) {
         if (!tradeDetailQueryReqDtoRequest.getClientSerialNo().equals("trade")) {
-            throw new AppException(ErrorCode.PARAM_ERROR.getCode(), ErrorCode.PARAM_ERROR.getMessage());
+            throw new AppException(ErrorCodeEnum.PARAM_ERROR.getCode(), ErrorCodeEnum.PARAM_ERROR.getMessage());
         }
     }
 
     private void checkTradeNo(Request<TradeDetailQueryReqDto> tradeDetailQueryReqDtoRequest) {
         if (!tradeDetailQueryReqDtoRequest.getData().getTradeNo().equals("trade")) {
-            throw new AppException(ErrorCode.PARAM_ERROR.getCode(), ErrorCode.PARAM_ERROR.getMessage());
+            throw new AppException(ErrorCodeEnum.PARAM_ERROR.getCode(), ErrorCodeEnum.PARAM_ERROR.getMessage());
         }
     }
 

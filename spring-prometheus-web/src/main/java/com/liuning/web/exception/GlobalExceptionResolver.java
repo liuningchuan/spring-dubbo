@@ -1,6 +1,6 @@
 package com.liuning.web.exception;
 
-import com.liuning.common.enums.ErrorCode;
+import com.liuning.common.enums.ErrorCodeEnum;
 import com.liuning.common.exception.AppException;
 import com.liuning.dto.Result;
 import org.slf4j.Logger;
@@ -31,6 +31,6 @@ public class GlobalExceptionResolver {
     @ResponseBody
     public Result<?> Exception(Exception e) {
         log.error("接口调用异常", e);
-        return Result.fail(ErrorCode.SYSTEM_ERROR.getCode(), ErrorCode.SYSTEM_ERROR.getMessage());
+        return Result.fail(ErrorCodeEnum.SYSTEM_ERROR.getCode(), ErrorCodeEnum.SYSTEM_ERROR.getMessage());
     }
 }

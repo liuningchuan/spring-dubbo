@@ -1,6 +1,6 @@
 package com.liuning.common.utils;
 
-import com.liuning.common.enums.ErrorCode;
+import com.liuning.common.enums.ErrorCodeEnum;
 import com.liuning.common.exception.AppException;
 import org.hibernate.validator.HibernateValidator;
 
@@ -32,7 +32,7 @@ public class ValidationUtils {
     public static <T> void validate(T obj) {
         Set<ConstraintViolation<T>> constrainViolations = validator.validate(obj);
         if (constrainViolations.size() > 0) {
-            throw new AppException(ErrorCode.PARAM_ERROR.getCode(),
+            throw new AppException(ErrorCodeEnum.PARAM_ERROR.getCode(),
                     String.format("参数校验失败:%s", constrainViolations.iterator().next().getMessage()));
         }
     }

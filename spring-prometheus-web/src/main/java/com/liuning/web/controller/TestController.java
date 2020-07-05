@@ -1,6 +1,5 @@
 package com.liuning.web.controller;
 
-import com.liuning.common.enums.ErrorCode;
 import com.liuning.dao.entity.User;
 import com.liuning.dao.entity.UserExample;
 import com.liuning.dao.mapper.UserMapper;
