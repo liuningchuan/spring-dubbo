@@ -1,6 +1,6 @@
 package com.liuning.test;
 
-import com.liuning.common.utils.SnowflakeId;
+import com.liuning.common.algorithms.SnowflakeId;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
