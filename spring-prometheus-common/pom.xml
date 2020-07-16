@@ -11,13 +11,18 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-prometheus-common</artifactId>
     <name>spring-prometheus-common ${project.version}</name>
+    <packaging>jar</packaging>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!--gson-->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
     </dependencies>
-    <packaging>jar</packaging>
-
 
 </project>
