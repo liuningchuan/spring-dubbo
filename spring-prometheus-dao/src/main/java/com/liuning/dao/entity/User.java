@@ -68,9 +68,7 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return getClass().getSimpleName() +
-                " [" +
-                "Hash = " + hashCode() +
-                ", id=" + id +
+                " [id=" + id +
                 ", email=" + email +
                 ", name=" + name +
                 ", password=" + password +

@@ -43,12 +43,7 @@ public class JsonUtils {
      * @return T
      */
     public static <T> T fromJson(String jsonStr, Type type) {
-        try {
-            return gson.fromJson(jsonStr, type);
-        } catch (JsonSyntaxException e) {
-            log.error("GSON.fromJson error", e);
-        }
-        return null;
+        return gson.fromJson(jsonStr, type);
     }
 
     /**
