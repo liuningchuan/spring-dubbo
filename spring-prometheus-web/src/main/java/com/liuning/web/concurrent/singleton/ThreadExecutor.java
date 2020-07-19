@@ -1,7 +1,5 @@
 package com.liuning.web.concurrent.singleton;
 
-import org.springframework.beans.factory.annotation.Value;
-
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -20,17 +18,25 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class ThreadExecutor {
 
-    @Value("${thread.pool.core-pool-size:20}")
-    private static int THREAD_CORE_POOL_SIZE;
+    /**
+     * 核心线程数
+     */
+    private static final int THREAD_CORE_POOL_SIZE = 20;
 
-    @Value("${thread.pool.maximum-pool-size:50}")
-    private static int THREAD_MAXIMUM_POOL_SIZE;
+    /**
+     * 最大线程数
+     */
+    private static final int THREAD_MAXIMUM_POOL_SIZE = 50;
 
-    @Value("${thread.pool.keep-alive-time:10L}")
+    /**
+     * 空余线程存活时间
+     */
     private static final long THREAD_KEEP_ALIVE_TIME = 10L;
 
-    @Value("${thread.pool.capacity:200}")
-    private static int THREAD_CAPACITY;
+    /**
+     * 队列大小
+     */
+    private static final int THREAD_CAPACITY = 200;
 
     private ThreadExecutor() {
     }

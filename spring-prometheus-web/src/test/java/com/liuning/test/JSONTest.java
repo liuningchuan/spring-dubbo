@@ -1,16 +1,13 @@
 package com.liuning.test;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.google.gson.reflect.TypeToken;
 import com.liuning.common.utils.JsonUtils;
 import com.liuning.dao.entity.User;
-import com.liuning.web.StartApplication;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.lang.reflect.Type;
 import java.util.*;
@@ -21,8 +18,6 @@ import java.util.*;
  * @create: 2020-07-16 23:53
  * @version: 1.0
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = {StartApplication.class})
 public class JSONTest {
 
     @Test
@@ -61,10 +56,17 @@ public class JSONTest {
         String jsonStr = JSONObject.toJSONString(list);
         System.out.println(JSON.toJSONString(list));
 
+        System.out.println("TypeReference Test begin.");
+
         Type type = new TypeReference<List<User>>() {}.getType();
         List<User> userList = JSON.parseObject(jsonStr, type);
         for (User user : userList) {
             System.out.println(user);
         }
+
+        System.out.println("JSONArray Test begin.");
+
+        JSONArray jsonArray = JSON.parseArray(jsonStr);
+        System.out.println(jsonArray);
     }
 }
