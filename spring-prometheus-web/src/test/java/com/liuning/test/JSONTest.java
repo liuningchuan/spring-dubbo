@@ -13,8 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author: liuning
@@ -37,8 +36,14 @@ public class JSONTest {
         List<User> userList = JsonUtils.fromJson(jsonStr, type);
 
         for (User user : userList) {
-            System.out.println(user);
+            System.out.println(JsonUtils.toJson(user));
         }
+
+        Map<String, String> map = new LinkedHashMap<>();
+        map.put("name", "LiuNing");
+        map.put("age", "25");
+        map.put("sex", "man");
+        System.out.println(JsonUtils.toJson(map));
     }
 
     @Test

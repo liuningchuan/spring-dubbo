@@ -32,8 +32,10 @@ public class ThreadPoolConfiguration {
     public GenericThreadPoolExecutor netSignThreadExecutor() {
         final AtomicInteger threadNumber = new AtomicInteger(1);
         GenericThreadPoolExecutor threadPoolExecutor =
-                new GenericThreadPoolExecutor(corePoolSize, maximumPoolSize,
-                        keepAliveTime, TimeUnit.MILLISECONDS,
+                new GenericThreadPoolExecutor(corePoolSize,
+                        maximumPoolSize,
+                        keepAliveTime,
+                        TimeUnit.MILLISECONDS,
                         new LinkedBlockingQueue<>(),
                         (Runnable r) -> {
                             Thread thread = new Thread(r);
