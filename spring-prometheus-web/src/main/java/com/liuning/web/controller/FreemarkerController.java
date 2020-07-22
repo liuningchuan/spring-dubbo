@@ -2,6 +2,7 @@ package com.liuning.web.controller;
 
 import com.liuning.common.enums.ErrorCodeEnum;
 import com.liuning.common.exception.AppException;
+import com.liuning.common.utils.ParamValidation;
 import com.liuning.common.utils.ValidationUtils;
 import com.liuning.dto.Request;
 import com.liuning.dto.Result;
@@ -36,7 +37,7 @@ class FreemarkerController {
                 .addChecker("校验交易流水号", this::checkTradeNo)
                 .executeAll();
 
-        ValidationUtils.validate(req);
+        ValidationUtils.validate(req, ParamValidation.class);
         System.out.println(req.getData().getTradeNo());
         return Result.success();
     }
