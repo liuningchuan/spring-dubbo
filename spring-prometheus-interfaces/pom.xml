@@ -22,4 +22,14 @@
 
     </dependencies>
 
+    <build>
+        <plugins>
+            <!--maven-source-plugin-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

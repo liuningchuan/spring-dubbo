@@ -13,4 +13,14 @@
     <name>spring-prometheus-invoke ${project.version}</name>
     <packaging>jar</packaging>
 
+    <build>
+        <plugins>
+            <!--maven-source-plugin-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
