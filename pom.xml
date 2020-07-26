@@ -27,6 +27,27 @@
         <tag>HEAD</tag>
     </scm>
 
+    <repositories>
+        <repository>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>openapi-commons-release</id>
+            <name>openapi commons release repository</name>
+            <url>http://192.168.1.1:8080/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>openapi-commons-snapshot</id>
+            <name>openapi commons snapshot repository</name>
+            <url>http://192.168.1.1:8080/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <properties>
         <revision>1.0.0-SNAPSHOT</revision>
         <java.version>1.8</java.version>
