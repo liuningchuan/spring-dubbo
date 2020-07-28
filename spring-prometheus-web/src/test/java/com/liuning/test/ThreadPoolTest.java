@@ -3,8 +3,8 @@ package com.liuning.test;
 import com.liuning.web.concurrent.singleton.ThreadExecutor;
 import org.junit.Test;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.Date;
+import java.util.concurrent.*;
 
 /**
  * @author: liuning
@@ -21,22 +21,31 @@ public class ThreadPoolTest {
     }
 
     @Test
-    public void threadPoolTest_2() {
+    public void threadPoolTest_2() throws InterruptedException {
 
         ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
-        for (int i=0; i < 100; i++) {
+        for (int i=0; i < 10; i++) {
             cachedThreadPool.submit(() -> System.out.println(Thread.currentThread().getName()));
         }
 
         ExecutorService fixedThreadPool = Executors.newFixedThreadPool(10);
-        for (int i=0; i < 100; i++) {
+        for (int i=0; i < 10; i++) {
             fixedThreadPool.submit(() -> System.out.println(Thread.currentThread().getName()));
         }
 
         ExecutorService singleaThreadPool = Executors.newSingleThreadExecutor();
-        for (int i=0; i < 100; i++) {
+        for (int i=0; i < 10; i++) {
             singleaThreadPool.submit(() -> System.out.println(Thread.currentThread().getName()));
         }
+
+        //测试ScheduledExecutorService，使用CountDownLatch等待定时任务的执行
+        final CountDownLatch countDownLatch = new CountDownLatch(3);
+        ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(5);
+        scheduledThreadPool.scheduleAtFixedRate(() -> {
+            System.out.println("time:" + new Date());
+            countDownLatch.countDown();
+        }, 0, 4, TimeUnit.SECONDS);
+        countDownLatch.await();
 
     }
 }
