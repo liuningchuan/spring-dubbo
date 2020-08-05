@@ -16,6 +16,12 @@ public class JsonUtils {
     private static final Gson gson = new Gson();
 
     /**
+     * cannot be instanced
+     */
+    private JsonUtils() {
+    }
+
+    /**
      * serializes the specified object into its equivalent Json representation.
      *
      * @param object the object for which json representation is to be created setting for fastjson
