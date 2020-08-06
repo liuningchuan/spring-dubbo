@@ -2,8 +2,12 @@ package com.liuning.common.utils;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import com.liuning.common.exception.AppException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +37,10 @@ public class JacksonUtils {
         mapper.configure(JsonParser.Feature.ALLOW_NUMERIC_LEADING_ZEROS, true);
         // 允许字符串中存在回车换行控制符
         mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
+        //支持jdk8的全新时间类库
+        mapper.registerModule(new JavaTimeModule())
+                .registerModule(new ParameterNamesModule())
+                .registerModule(new Jdk8Module());
     }
 
     public static String toJSONString(Object object) {
@@ -47,6 +55,15 @@ public class JacksonUtils {
     public static <T> T parseObject(String jsonStr, Class<T> tClass) {
         try {
             return mapper.readValue(jsonStr, tClass);
+        } catch (IOException e) {
+            log.error("Jackson deserialize error", e);
+            throw new AppException("999999", "JSON反序列化异常");
+        }
+    }
+
+    public static <T> T parseObject(String jsonStr, TypeReference<T> type) {
+        try {
+            return mapper.readValue(jsonStr, type);
         } catch (IOException e) {
             log.error("Jackson deserialize error", e);
             throw new AppException("999999", "JSON反序列化异常");
