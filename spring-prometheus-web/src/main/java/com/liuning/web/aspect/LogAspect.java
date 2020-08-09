@@ -1,6 +1,7 @@
 package com.liuning.web.aspect;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.liuning.common.utils.IPUtils;
+import com.liuning.common.utils.JsonUtils;
 import com.liuning.web.concurrent.GenericThreadPoolExecutor;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -8,14 +9,12 @@ import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 import java.util.Objects;
 
@@ -25,9 +24,11 @@ public class LogAspect {
 
     private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
 
-    @Autowired
-    @Qualifier("threadPoolExecutor")
-    private GenericThreadPoolExecutor logExecutorService;
+    private final GenericThreadPoolExecutor logExecutorService;
+
+    public LogAspect(@Qualifier("threadPoolExecutor") GenericThreadPoolExecutor logExecutorService) {
+        this.logExecutorService = logExecutorService;
+    }
 
     @Pointcut("execution(* com.liuning.web.controller.*.*(..))")
     public void LogAspect() {
@@ -82,13 +83,11 @@ public class LogAspect {
                 .getRequestAttributes())).getRequest();
         String apiName = request.getParameter("apiName");
         logger.info("apiName is : {}, interface is {}", apiName, log.name());
-        HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder
-                .getRequestAttributes()).getResponse();
+        logger.info("Remote IP is : {}", IPUtils.getIPAddress(request));
         Object[] args = joinPoint.getArgs();
-        ObjectMapper objectMapper = new ObjectMapper();
-        logger.info("Request is {}", objectMapper.writeValueAsString(args));
+        logger.info("Request is {}", JsonUtils.toJson(args));
         Object object = joinPoint.proceed(args);
-        logger.info("Response is {}", objectMapper.writeValueAsString(object));
+        logger.info("Response is {}", JsonUtils.toJson(object));
         return object;
     }
 }

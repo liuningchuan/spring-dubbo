@@ -41,7 +41,7 @@ public class TestController {
     @GetMapping("/result")
     @ApiOperation(value = "Result测试", notes = "返回成功")
     @BusiLog(name = "测试接口",ignore = true)
-    public Result result(){
+    public Result<?> result(){
         return Result.success();
     }
 
@@ -52,11 +52,8 @@ public class TestController {
         return Result.success(user);
     }
 
-    /**
-     * 直接返回字符串
-     * @return string
-     */
     @GetMapping("/string")
+    @BusiLog(name = "返回字符串",ignore = true)
     public String getString() {
         return "SUCCESS";
     }
