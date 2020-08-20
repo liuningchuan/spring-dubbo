@@ -12,5 +12,8 @@ public class URITest {
         System.out.println(query);
         resource = (query != null ? resource.substring(0, resource.indexOf('?')) : resource);
         System.out.println(resource);
+
+        System.out.println(System.getProperty("user.dir"));
+        System.out.println(ClassLoader.getSystemClassLoader().getResource("application.properties").getPath());
     }
 }
