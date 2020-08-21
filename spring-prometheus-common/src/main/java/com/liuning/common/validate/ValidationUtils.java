@@ -1,4 +1,4 @@
-package com.liuning.common.utils;
+package com.liuning.common.validate;
 
 import com.liuning.common.enums.ErrorCodeEnum;
 import com.liuning.common.exception.AppException;

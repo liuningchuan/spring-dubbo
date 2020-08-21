@@ -1,4 +1,4 @@
-package com.liuning.common.utils;
+package com.liuning.common.validate;
 
 /**
  * @author: liuning

@@ -2,8 +2,8 @@ package com.liuning.web.controller;
 
 import com.liuning.common.enums.ErrorCodeEnum;
 import com.liuning.common.exception.AppException;
-import com.liuning.common.utils.ParamValidation;
-import com.liuning.common.utils.ValidationUtils;
+import com.liuning.common.validate.ParamValidation;
+import com.liuning.common.validate.ValidationUtils;
 import com.liuning.dto.Request;
 import com.liuning.dto.Result;
 import com.liuning.dto.trade.TradeDetailQueryReqDto;

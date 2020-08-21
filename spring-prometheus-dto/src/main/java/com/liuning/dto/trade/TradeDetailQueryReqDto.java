@@ -1,6 +1,6 @@
 package com.liuning.dto.trade;
 
-import com.liuning.common.utils.ParamValidation;
+import com.liuning.common.validate.ParamValidation;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;

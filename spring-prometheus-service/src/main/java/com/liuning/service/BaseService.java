@@ -4,5 +4,5 @@ import com.liuning.dto.Result;
 
 public interface BaseService {
 
-    Result execute();
+    Result<?> execute();
 }
