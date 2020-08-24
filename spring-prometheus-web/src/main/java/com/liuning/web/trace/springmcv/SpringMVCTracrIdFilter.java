@@ -1,4 +1,4 @@
-package com.liuning.web.filter;
+package com.liuning.web.trace.springmcv;
 
 import org.slf4j.MDC;
 
@@ -11,7 +11,7 @@ import java.util.UUID;
  * @date 2019-10-09
  * @description 生成全链路trace_id，作为MDC码，方便追踪单个请求
  */
-public class TracrIdFilter implements Filter {
+public class SpringMVCTracrIdFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 

@@ -1,5 +1,6 @@
 package com.liuning.web.http;
 
+import com.liuning.web.trace.httpclient.HttpClientTraceIdInterceptor;
 import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpRequest;
 import org.apache.http.NoHttpResponseException;
@@ -111,6 +112,7 @@ public class HttpClientPool {
         return HttpClients.custom().setConnectionManager(cm)
                 .setDefaultRequestConfig(requestConfig)
                 .setRetryHandler(httpRequestRetryHandler)
+                .addInterceptorLast(new HttpClientTraceIdInterceptor())
                 .build();
     }
 

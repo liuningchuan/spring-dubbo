@@ -1,5 +1,6 @@
 package com.liuning.web.filter;
 
+import com.liuning.web.trace.springmcv.SpringMVCTracrIdFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,9 +14,9 @@ import org.springframework.context.annotation.Configuration;
 public class FilterConfiguration {
 
     @Bean
-    public FilterRegistrationBean<TracrIdFilter> mdcFilter() {
-        FilterRegistrationBean<TracrIdFilter> registrationBean = new FilterRegistrationBean<>();
-        registrationBean.setFilter(new TracrIdFilter());
+    public FilterRegistrationBean<SpringMVCTracrIdFilter> mdcFilter() {
+        FilterRegistrationBean<SpringMVCTracrIdFilter> registrationBean = new FilterRegistrationBean<>();
+        registrationBean.setFilter(new SpringMVCTracrIdFilter());
         registrationBean.setName("traceIdFilter");
         registrationBean.addUrlPatterns("/*");
         return registrationBean;
