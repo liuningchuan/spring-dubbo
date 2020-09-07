@@ -5,6 +5,10 @@ import com.liuning.common.exception.AppException;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 /**
@@ -52,6 +56,46 @@ public class DateUtil {
      */
     public static Date now() {
         return new Date();
+    }
+
+    /**
+     * LocalDate -> Date
+     *
+     * @param localDate LocalDate
+     * @return Date
+     */
+    public static Date asDate(LocalDate localDate) {
+        return Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+    }
+
+    /**
+     * LocalDateTime -> Date
+     *
+     * @param localDateTime LocalDateTime
+     * @return Date
+     */
+    public static Date asDate(LocalDateTime localDateTime) {
+        return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+    }
+
+    /**
+     * Date -> LocalDate
+     *
+     * @param date Date
+     * @return LocalDate
+     */
+    public static LocalDate asLocalDate(Date date) {
+        return Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    /**
+     * Date -> LocalDateTime
+     *
+     * @param date Date
+     * @return LocalDateTime
+     */
+    public static LocalDateTime asLocalDateTime(Date date) {
+        return Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDateTime();
     }
 
 }
