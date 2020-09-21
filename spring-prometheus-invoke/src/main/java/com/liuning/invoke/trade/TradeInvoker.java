@@ -8,4 +8,11 @@ package com.liuning.invoke.trade;
  */
 public interface TradeInvoker {
 
+    /**
+     * 交易详情查询
+     *
+     * @param tradeNo 交易流水号
+     * @return 交易详情
+     */
+    String tradeDetailQuery(String tradeNo);
 }
