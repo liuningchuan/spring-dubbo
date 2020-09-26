@@ -1,5 +1,6 @@
 package com.liuning.invoke;
 
+import com.liuning.invoke.invoker.BaseResponse;
 import com.liuning.invoke.invoker.GenericInvokerTemplate;
 import com.liuning.invoke.trade.TradeInvoker;
 import com.liuning.invoke.trade.impl.TradeInvokerImpl;
@@ -24,8 +25,10 @@ public class InvokerTest {
 
     @Test
     public void test() {
-        String tradeDetail = GenericInvokerTemplate.invoke(
-                () -> tradeInvoker.tradeDetailQuery("233")
+        BaseResponse<String> tradeDetail = GenericInvokerTemplate.invoke(
+                "交易详情查询接口",
+                () -> tradeInvoker.tradeDetailQuery("233"),
+                result -> true
         );
         System.out.println(tradeDetail);
     }

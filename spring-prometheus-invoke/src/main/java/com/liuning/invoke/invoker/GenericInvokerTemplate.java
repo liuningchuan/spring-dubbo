@@ -8,13 +8,20 @@ package com.liuning.invoke.invoker;
  */
 public class GenericInvokerTemplate {
 
-    public static <R, T> R invoke(Invoker<R> invoker) {
-        R response = null;
+    public static <R, T> BaseResponse<R> invoke(String desc,
+                                                Invoker<R> invoker,
+                                                ResponseChecker<R> responseChecker) {
+
+        BaseResponse<R> response = null;
         try {
-            response =invoker.invoke();
+            R rawResponse =invoker.invoke();
+            if (responseChecker.isSuccess(rawResponse)) {
+                return BaseResponse.success(rawResponse);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return response;
+        return null;
     }
 }
