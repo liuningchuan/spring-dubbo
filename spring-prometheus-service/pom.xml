@@ -18,6 +18,11 @@
             <groupId>com.liuning</groupId>
             <artifactId>spring-prometheus-dto</artifactId>
         </dependency>
+        <!--spring-retry-->
+        <dependency>
+            <groupId>org.springframework.retry</groupId>
+            <artifactId>spring-retry</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
