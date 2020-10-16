@@ -9,6 +9,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
@@ -17,7 +18,7 @@ import java.util.Date;
  * @create: 2020-07-22 00:14
  * @version: 1.0
  */
-public class DateUtil {
+public class DateFormatUtil {
 
     /**
      * 格式化日期
@@ -29,6 +30,20 @@ public class DateUtil {
     public static String format(Date date, String format) {
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         return sdf.format(date);
+    }
+
+    /**
+     * 将日期格式为originFormatter的字符串转换成targetFormatter格式的字符串
+     *
+     * @param dateTime 日期字符串
+     * @param originFormatter 转换前的日期格式
+     * @param targetFormatter 转换后的日期格式
+     * @return 转换后的日期字符串
+     */
+    public static String formate(String dateTime, String originFormatter, String targetFormatter) {
+        LocalDate localDate = LocalDate.parse(dateTime, DateTimeFormatter.ofPattern(originFormatter));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(targetFormatter);
+        return formatter.format(localDate);
     }
 
     /**
