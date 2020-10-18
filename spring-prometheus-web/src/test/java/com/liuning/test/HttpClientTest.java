@@ -1,5 +1,6 @@
 package com.liuning.test;
 
+import com.liuning.service.user.UserService;
 import com.liuning.web.StartApplication;
 import com.liuning.web.http.HttpClientAdapter;
 import org.junit.Test;
@@ -14,6 +15,19 @@ public class HttpClientTest {
 
     @Autowired
     HttpClientAdapter httpClientAdapter;
+
+    @Autowired
+    UserService userService;
+
+    @Test
+    public void test() {
+        userService.insertUser();
+    }
+
+    @Test
+    public void test2() {
+        userService.insertUsers();
+    }
 
     @Test
     public void doGet() {
