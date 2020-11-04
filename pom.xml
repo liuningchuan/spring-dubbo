@@ -76,6 +76,34 @@
         <mybatis-generator-maven-plugin.version>1.4.0</mybatis-generator-maven-plugin.version>
     </properties>
 
+    <dependencies>
+        <!--spring-boot-starter-test-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--junit-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--powermock-junit4-->
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4</artifactId>
+            <version>2.0.2</version>
+            <scope>test</scope>
+        </dependency>
+        <!--powermock-mockito2-->
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito2</artifactId>
+            <version>2.0.2</version>
+        </dependency>
+    </dependencies>
+
     <!--统一管理项目的版本号，确保应用的各个项目的依赖和版本一致
     dependencyManagement里只是声明依赖，并不实现引入，因此子项目需要显示的声明需要用的依赖-->
     <dependencyManagement>

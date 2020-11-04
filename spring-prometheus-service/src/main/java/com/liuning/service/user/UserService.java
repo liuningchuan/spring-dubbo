@@ -79,5 +79,17 @@ public class UserService {
                 }
             }
         });
+
+        transactionTemplate.execute(transactionStatus -> {
+            try {
+                userMapper.insert(user);
+                userDetailMapper.insertSelective(userDetail);
+            } catch (Exception e) {
+                log.error("插入数据库异常", e);
+                transactionStatus.setRollbackOnly();
+                throw e;
+            }
+            return true;
+        });
     }
 }

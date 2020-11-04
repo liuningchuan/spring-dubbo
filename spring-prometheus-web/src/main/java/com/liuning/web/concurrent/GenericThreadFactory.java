@@ -25,6 +25,7 @@ public class GenericThreadFactory implements ThreadFactory {
         thread.setName(namePrefix + threadNumber.getAndIncrement());
         /**
          * 设置非守护线程
+         * 当JVM停止时，所有仍然在执行的守护线程都会被抛弃--既不会执行finally代码块，也不会执行回卷栈
          */
         if (thread.isDaemon()) {
             thread.setDaemon(false);

@@ -4,6 +4,7 @@ import com.liuning.invoke.invoker.BaseResponse;
 import com.liuning.invoke.invoker.GenericInvokerTemplate;
 import com.liuning.invoke.trade.TradeInvoker;
 import com.liuning.invoke.trade.impl.TradeInvokerImpl;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class InvokerTest {
                 () -> tradeInvoker.tradeDetailQuery("233"),
                 result -> true
         );
+        Assert.assertNotNull(tradeDetail);
+        Assert.assertTrue(tradeDetail.isSuccess());
+        Assert.assertEquals("000000", tradeDetail.getCode());
         System.out.println(tradeDetail);
     }
 }
