@@ -45,7 +45,8 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--要生成的表结构-->
-        <table tableName="user" domainObjectName="User">
+<!--        <table tableName="user" domainObjectName="User">-->
+        <table tableName="user_detail" domainObjectName="UserDetail">
         </table>
 
     </context>
