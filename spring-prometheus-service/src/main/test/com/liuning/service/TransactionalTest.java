@@ -4,6 +4,7 @@ import com.liuning.dao.mapper.UserMapper;
 import com.liuning.service.user.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -14,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @author liuning
  * @since 2020-10-18 23:01
  */
-@ContextConfiguration(classes = {UserMapper.class,UserMapper.class})
+@ContextConfiguration(classes = {TestComponentScanConfig.class, MybatisAutoConfiguration.class})
 @RunWith(SpringRunner.class)
 public class TransactionalTest {
 
