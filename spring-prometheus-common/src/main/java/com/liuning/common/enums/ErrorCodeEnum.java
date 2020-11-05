@@ -21,7 +21,7 @@ public enum ErrorCodeEnum {
         this.message = message;
     }
 
-    public ErrorCodeEnum getValueOf(String code) {
+    public static ErrorCodeEnum getValueOf(String code) {
         for (ErrorCodeEnum errorCodeEnum : ErrorCodeEnum.values()) {
             if (errorCodeEnum.getCode().equals(code)) {
                 return errorCodeEnum;
