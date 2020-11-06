@@ -4,6 +4,7 @@ import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,6 +40,11 @@ public class DruidDataSourceConfig {
         return dataSource;
     }
 
+    /**
+     * durid监控页面配置
+     * 访问地址：http://{ip}:{port}/project-name/druid/sql.html
+     */
+    @ConditionalOnProperty(name = "spring.datasource.druid.monitor.enable", havingValue = "true")
     @Bean
     public ServletRegistrationBean<StatViewServlet> druidStatViewServlet() {
         ServletRegistrationBean<StatViewServlet> registrationBean = new ServletRegistrationBean<>(new StatViewServlet(),  "/druid/*");

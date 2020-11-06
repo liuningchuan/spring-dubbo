@@ -27,7 +27,7 @@ public class VolatileTest {
      *  将其计算器初始化为1，多个线程在开始执行任务前首先countdownlatch.await()，当主线程调用countDown()时，
      *  计数器变为0，多个线程同时被唤醒。
      */
-    private static CountDownLatch countDownLatch = new CountDownLatch(THREADS_COUNT);
+    private static final CountDownLatch countDownLatch = new CountDownLatch(THREADS_COUNT);
 
     /**
      * AtomicInteger.getAndIncrement是典型的CAS算法
