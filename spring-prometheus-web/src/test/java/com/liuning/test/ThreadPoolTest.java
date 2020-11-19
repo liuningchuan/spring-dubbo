@@ -18,6 +18,7 @@ public class ThreadPoolTest {
     public void threadPoolTest_1() {
         ThreadExecutor.execute(() -> System.out.println(Thread.currentThread().getName()));
         System.out.println(Thread.currentThread().getName());
+        System.out.println(Runtime.getRuntime().availableProcessors());
     }
 
     @Test

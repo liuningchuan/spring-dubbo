@@ -21,12 +21,12 @@ public class ThreadExecutor {
     /**
      * 核心线程数
      */
-    private static final int THREAD_CORE_POOL_SIZE = 20;
+    private static final int THREAD_CORE_POOL_SIZE = Runtime.getRuntime().availableProcessors();
 
     /**
      * 最大线程数
      */
-    private static final int THREAD_MAXIMUM_POOL_SIZE = 50;
+    private static final int THREAD_MAXIMUM_POOL_SIZE = Runtime.getRuntime().availableProcessors() * 2;
 
     /**
      * 空余线程存活时间
