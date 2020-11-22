@@ -1,11 +1,12 @@
 package com.liuning.interfaces.impl.trade;
 
 import com.liuning.common.constants.DubboProviderConstants;
-import com.liuning.interfaces.trade.entity.PayForAnotherReqDto;
-import com.liuning.interfaces.trade.entity.PayForAnotherResDto;
-import com.liuning.interfaces.trade.entity.WithdrawalsReqDto;
-import com.liuning.interfaces.trade.entity.WithdrawalsResDto;
-import com.liuning.interfaces.trade.service.TradeDubboService;
+import com.liuning.interfaces.dto.BaseResponse;
+import com.liuning.interfaces.dto.trade.PayForAnotherReqDto;
+import com.liuning.interfaces.dto.trade.PayForAnotherResDto;
+import com.liuning.interfaces.dto.trade.WithdrawalsReqDto;
+import com.liuning.interfaces.dto.trade.WithdrawalsResDto;
+import com.liuning.interfaces.api.trade.TradeDubboService;
 import org.apache.dubbo.config.annotation.Service;
 
 /**
@@ -21,12 +22,12 @@ import org.apache.dubbo.config.annotation.Service;
 public class TradeDubboServiceImpl implements TradeDubboService {
 
     @Override
-    public PayForAnotherResDto payForAnother(PayForAnotherReqDto req) {
+    public BaseResponse<PayForAnotherResDto> payForAnother(PayForAnotherReqDto req) {
         return null;
     }
 
     @Override
-    public WithdrawalsResDto withdrawals(WithdrawalsReqDto req) {
+    public BaseResponse<WithdrawalsResDto> withdrawals(WithdrawalsReqDto req) {
         return null;
     }
 }

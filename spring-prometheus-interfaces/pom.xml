@@ -13,13 +13,13 @@
     <name>spring-prometheus-interfaces ${project.version}</name>
     <packaging>jar</packaging>
 
+    <!--interfaces模块仅允许依赖validator、lombok等少数依赖-->
     <dependencies>
         <!--hibernate-validator-->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>

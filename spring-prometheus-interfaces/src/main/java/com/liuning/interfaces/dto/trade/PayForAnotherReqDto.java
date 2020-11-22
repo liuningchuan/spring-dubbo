@@ -1,4 +1,4 @@
-package com.liuning.interfaces.trade.entity;
+package com.liuning.interfaces.dto.trade;
 
 import org.hibernate.validator.constraints.Length;
 

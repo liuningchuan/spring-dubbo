@@ -1,4 +1,4 @@
-package com.liuning.interfaces.account.entity;
+package com.liuning.interfaces.dto.account;
 
 import org.hibernate.validator.constraints.Length;
 

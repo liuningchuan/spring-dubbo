@@ -1,8 +1,9 @@
 package com.liuning.interfaces.impl.account;
 
-import com.liuning.interfaces.account.entity.AccountOpenReqDto;
-import com.liuning.interfaces.account.entity.AccountOpenResDto;
-import com.liuning.interfaces.account.service.AccountDubboService;
+import com.liuning.interfaces.dto.BaseResponse;
+import com.liuning.interfaces.dto.account.AccountOpenReqDto;
+import com.liuning.interfaces.dto.account.AccountOpenResDto;
+import com.liuning.interfaces.api.account.AccountDubboService;
 
 /**
  * @author: liuning
@@ -13,7 +14,7 @@ import com.liuning.interfaces.account.service.AccountDubboService;
 public class AccountDubboServiceImpl implements AccountDubboService {
 
     @Override
-    public AccountOpenResDto accountOpen(AccountOpenReqDto req) {
+    public BaseResponse<AccountOpenResDto> accountOpen(AccountOpenReqDto req) {
         return null;
     }
 }
