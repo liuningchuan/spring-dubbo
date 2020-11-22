@@ -27,6 +27,13 @@
         <tag>HEAD</tag>
     </scm>
 
+    <developers>
+        <developer>
+            <name>LiuNing</name>
+            <email>mayrzlmayrzl@outlook.com</email>
+        </developer>
+    </developers>
+
     <repositories>
         <repository>
             <id>alimaven</id>
