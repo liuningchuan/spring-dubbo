@@ -66,6 +66,7 @@
         <druid.version>1.1.10</druid.version>
         <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>
         <mysql-connector-java.version>8.0.16</mysql-connector-java.version>
+        <rocketmq-spring-boot-starter.version>2.1.0</rocketmq-spring-boot-starter.version>
         <dubbo.version>2.7.2</dubbo.version>
         <curator-recipes.version>2.12.0</curator-recipes.version>
         <zkclient.version>0.11</zkclient.version>
@@ -190,6 +191,12 @@
                 <artifactId>hibernate-validator</artifactId>
                 <version>${hibernate-validator.version}</version>
             </dependency>
+            <!--rocketmq-spring-boot-starter-->
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-spring-boot-starter</artifactId>
+                <version>${rocketmq-spring-boot-starter.version}}</version>
+            </dependency>
             <!--dubbo-->
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
@@ -231,6 +238,8 @@
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
                 <version>${logback-classic.version}</version>
+                <scope>runtime</scope>
+                <optional>true</optional>
             </dependency>
             <!--commons-lang3-->
             <dependency>

@@ -4,6 +4,8 @@ import com.liuning.common.utils.DateFormatUtil;
 import com.liuning.common.utils.JsonUtils;
 import org.junit.Test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -29,11 +31,19 @@ public class DateTest {
     public void dateUtil() {
         System.out.println(DateFormatUtil.format(new Date(), "yyyy-MM-dd HH:mm:ss:SSS"));
         System.out.println(DateFormatUtil.parse("2020-08-14 23:53:37:244", "yyyy-MM-dd HH:mm:ss:SSS"));
+        System.out.println(DateFormatUtil.parse("2020-08-14", "yyyyMMdd"));
         System.out.println(DateFormatUtil.now());
     }
 
     @Test
     public void dateFormateUtil() {
         System.out.println(DateFormatUtil.formate("20201015", "yyyyMMdd", "yyyy-MM-dd"));
+    }
+
+    @Test
+    public void simpleDateFormat() throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        Date date = sdf.parse("2020-11-04");
+        System.out.println(date);
     }
 }
