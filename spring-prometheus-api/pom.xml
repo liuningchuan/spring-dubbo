@@ -9,8 +9,8 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-prometheus-interfaces</artifactId>
-    <name>spring-prometheus-interfaces ${project.version}</name>
+    <artifactId>spring-prometheus-api</artifactId>
+    <name>spring-prometheus-api ${project.version}</name>
     <packaging>jar</packaging>
 
     <!--interfaces模块仅允许依赖validator、lombok等少数依赖-->
