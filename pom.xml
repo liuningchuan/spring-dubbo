@@ -10,8 +10,7 @@
     <version>${revision}</version>
 
     <modules>
-        <module>spring-prometheus-interfaces</module>
-        <module>spring-prometheus-interfaces-impl</module>
+        <module>spring-prometheus-api</module>
         <module>spring-prometheus-web</module>
         <module>spring-prometheus-dao</module>
         <module>spring-prometheus-service</module>
@@ -126,12 +125,7 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>spring-prometheus-interfaces</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>spring-prometheus-interfaces-impl</artifactId>
+                <artifactId>spring-prometheus-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
