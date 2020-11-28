@@ -1,7 +1,10 @@
 package com.liuning.interfaces.dto.trade;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
+@Data
 public class PayForAnotherResDto implements Serializable {
 
     private static final long serialVersionUID = 3463317497663052545L;
@@ -27,45 +30,4 @@ public class PayForAnotherResDto implements Serializable {
      */
     private String tradeStatus;
 
-    public String getRespCode() {
-        return respCode;
-    }
-
-    public void setRespCode(String respCode) {
-        this.respCode = respCode;
-    }
-
-    public String getRespMsg() {
-        return respMsg;
-    }
-
-    public void setRespMsg(String respMsg) {
-        this.respMsg = respMsg;
-    }
-
-    public String getTradeNo() {
-        return tradeNo;
-    }
-
-    public void setTradeNo(String tradeNo) {
-        this.tradeNo = tradeNo;
-    }
-
-    public String getTradeStatus() {
-        return tradeStatus;
-    }
-
-    public void setTradeStatus(String tradeStatus) {
-        this.tradeStatus = tradeStatus;
-    }
-
-    @Override
-    public String toString() {
-        return "PayForAnotherResDto{" +
-                "respCode='" + respCode + '\'' +
-                ", respMsg='" + respMsg + '\'' +
-                ", tradeNo='" + tradeNo + '\'' +
-                ", tradeStatus='" + tradeStatus + '\'' +
-                '}';
-    }
 }

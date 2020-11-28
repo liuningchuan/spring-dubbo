@@ -1,5 +1,6 @@
 package com.liuning.interfaces.dto.account;
 
+import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
@@ -11,6 +12,7 @@ import java.io.Serializable;
  * @create: 2020-06-15 23:23
  * @version: 1.0
  */
+@Data
 public class AccountOpenReqDto implements Serializable {
 
     private static final long serialVersionUID = 8617520276258587504L;
@@ -69,81 +71,4 @@ public class AccountOpenReqDto implements Serializable {
     @Length(max = 30, message = "身份证上的有效日期 格式：yyyy-MM-dd 如果长期有效则传入 ‘长期’")
     private String cardEndDate;
 
-    public String getCustMerchantNo() {
-        return custMerchantNo;
-    }
-
-    public void setCustMerchantNo(String custMerchantNo) {
-        this.custMerchantNo = custMerchantNo;
-    }
-
-    public String getCustName() {
-        return custName;
-    }
-
-    public void setCustName(String custName) {
-        this.custName = custName;
-    }
-
-    public String getMobilePhoneNum() {
-        return mobilePhoneNum;
-    }
-
-    public void setMobilePhoneNum(String mobilePhoneNum) {
-        this.mobilePhoneNum = mobilePhoneNum;
-    }
-
-    public String getAcct() {
-        return acct;
-    }
-
-    public void setAcct(String acct) {
-        this.acct = acct;
-    }
-
-    public String getCustIdt() {
-        return custIdt;
-    }
-
-    public void setCustIdt(String custIdt) {
-        this.custIdt = custIdt;
-    }
-
-    public String getCustIdNo() {
-        return custIdNo;
-    }
-
-    public void setCustIdNo(String custIdNo) {
-        this.custIdNo = custIdNo;
-    }
-
-    public String getCardStartDate() {
-        return cardStartDate;
-    }
-
-    public void setCardStartDate(String cardStartDate) {
-        this.cardStartDate = cardStartDate;
-    }
-
-    public String getCardEndDate() {
-        return cardEndDate;
-    }
-
-    public void setCardEndDate(String cardEndDate) {
-        this.cardEndDate = cardEndDate;
-    }
-
-    @Override
-    public String toString() {
-        return "AccountOpenReqDto{" +
-                "custMerchantNo='" + custMerchantNo + '\'' +
-                ", custName='" + custName + '\'' +
-                ", mobilePhoneNum='" + mobilePhoneNum + '\'' +
-                ", acct='" + acct + '\'' +
-                ", custIdt='" + custIdt + '\'' +
-                ", custIdNo='" + custIdNo + '\'' +
-                ", cardStartDate='" + cardStartDate + '\'' +
-                ", cardEndDate='" + cardEndDate + '\'' +
-                '}';
-    }
 }

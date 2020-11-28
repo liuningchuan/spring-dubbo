@@ -1,5 +1,6 @@
 package com.liuning.interfaces.dto.account;
 
+import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 import java.io.Serializable;
@@ -10,6 +11,7 @@ import java.io.Serializable;
  * @create: 2020-06-15 23:28
  * @version: 1.0
  */
+@Data
 public class AccountOpenResDto implements Serializable {
 
     private static final long serialVersionUID = -4845747278112129026L;
@@ -26,27 +28,4 @@ public class AccountOpenResDto implements Serializable {
     @Length(max = 22, message = "账号最长为22位")
     private String accountNo;
 
-    public String getCustMerchantNo() {
-        return custMerchantNo;
-    }
-
-    public void setCustMerchantNo(String custMerchantNo) {
-        this.custMerchantNo = custMerchantNo;
-    }
-
-    public String getAccountNo() {
-        return accountNo;
-    }
-
-    public void setAccountNo(String accountNo) {
-        this.accountNo = accountNo;
-    }
-
-    @Override
-    public String toString() {
-        return "AccountOpenResDto{" +
-                "custMerchantNo='" + custMerchantNo + '\'' +
-                ", accountNo='" + accountNo + '\'' +
-                '}';
-    }
 }
