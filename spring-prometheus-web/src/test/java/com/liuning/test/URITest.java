@@ -2,6 +2,7 @@ package com.liuning.test;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Arrays;
 
 public class URITest {
 
@@ -15,5 +16,7 @@ public class URITest {
 
         System.out.println(System.getProperty("user.dir"));
         System.out.println(ClassLoader.getSystemClassLoader().getResource("application.properties").getPath());
+
+        System.out.println(Arrays.toString("er||wewe||ewe".split("\\|\\|")));
     }
 }
