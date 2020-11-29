@@ -1,11 +1,12 @@
-package com.liuning.web.config;
+package com.liuning.web.config.retry;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.retry.backoff.ExponentialBackOffPolicy;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
+
+import javax.annotation.Resource;
 
 /**
  * spring重试机制
@@ -16,29 +17,8 @@ import org.springframework.retry.support.RetryTemplate;
 @Configuration
 public class RetryConfig {
 
-    /**
-     * 最大重试次数
-     */
-    @Value("${retry.max.attempts:3}")
-    private int retryMaxAttempts;
-
-    /**
-     * 重试间隔
-     */
-    @Value("${retry.initial.interval:3}")
-    private int retryInitialInterval;
-
-    /**
-     * 重试倍数
-     */
-    @Value("${retry.multiplier:2}")
-    private int retryMultiplier;
-
-    /**
-     * 最大重试间隔
-     */
-    @Value("${retry.max.interval:30000}")
-    private int retryMaxInterval;
+    @Resource
+    private RetryProperties retryProperties;
 
     @Bean
     public RetryTemplate retryTemplate() {
@@ -46,13 +26,13 @@ public class RetryConfig {
         RetryTemplate retryTemplate = new RetryTemplate();
 
         SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy();
-        retryPolicy.setMaxAttempts(retryMaxAttempts);
+        retryPolicy.setMaxAttempts(retryProperties.getMaxAttempts());
         retryTemplate.setRetryPolicy(retryPolicy);
 
         ExponentialBackOffPolicy backOffPolicy = new ExponentialBackOffPolicy();
-        backOffPolicy.setInitialInterval(retryInitialInterval);
-        backOffPolicy.setMultiplier(retryMultiplier);
-        backOffPolicy.setMaxInterval(retryMaxInterval);
+        backOffPolicy.setInitialInterval(retryProperties.getInitialInterval());
+        backOffPolicy.setMultiplier(retryProperties.getMultiplier());
+        backOffPolicy.setMaxInterval(retryProperties.getMaxInterval());
         retryTemplate.setBackOffPolicy(backOffPolicy);
 
         return retryTemplate;
