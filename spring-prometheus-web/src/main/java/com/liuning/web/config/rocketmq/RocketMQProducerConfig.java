@@ -3,6 +3,7 @@ package com.liuning.web.config.rocketmq;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * RocketMQ生产者配置
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Bean;
  * @author liuning
  * @since 2020-11-29 23:36
  */
+@Configuration
 public class RocketMQProducerConfig {
 
     @Value("${rocketmq.address}")
