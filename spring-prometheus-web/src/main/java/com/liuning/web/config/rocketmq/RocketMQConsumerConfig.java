@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
  */
 public class RocketMQConsumerConfig {
 
-    @Bean(name = "conxumer", initMethod = "start", destroyMethod = "shutdown")
+    @Bean(name = "consumer", initMethod = "start", destroyMethod = "shutdown")
     public DefaultMQPushConsumer consumer() {
         return new DefaultMQPushConsumer();
     }
