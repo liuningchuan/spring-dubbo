@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
@@ -26,6 +27,7 @@ import javax.annotation.Resource;
  * @since 2020-10-18 22:16
  */
 @Service
+@Scope(value = "singleton")
 public class UserService implements InitializingBean {
 
     private static final Logger log = LoggerFactory.getLogger(UserService.class);
