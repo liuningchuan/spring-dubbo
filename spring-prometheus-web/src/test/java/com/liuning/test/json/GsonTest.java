@@ -60,6 +60,10 @@ public class GsonTest {
         DateExample dateExample2 = GSON.fromJson(dateString2, DateExample.class);
         System.out.println("date is " + dateExample2.getDate());
 
+
+        DateExample2 dateExample3 = GSON.fromJson(dateString2, DateExample2.class);
+        System.out.println("date is " + GSON.toJson(dateExample3));
+
     }
 
     private static class DateExample {
@@ -91,6 +95,40 @@ public class GsonTest {
         }
 
         public void setDate(Date date) {
+            this.date = date;
+        }
+    }
+
+
+    private static class DateExample2 {
+
+        public String name;
+
+        public String description;
+
+        public String date;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public String getDate() {
+            return date;
+        }
+
+        public void setDate(String date) {
             this.date = date;
         }
     }

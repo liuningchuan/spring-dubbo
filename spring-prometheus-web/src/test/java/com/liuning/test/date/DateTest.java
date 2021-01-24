@@ -45,5 +45,8 @@ public class DateTest {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         Date date = sdf.parse("2020-11-04");
         System.out.println(date);
+
+        LocalDate date1 = LocalDate.parse("2020-12-31");
+        System.out.println(date1);
     }
 }
