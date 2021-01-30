@@ -1,7 +1,7 @@
 package com.liuning.test.retry;
 
 import com.liuning.service.retry.RetryService;
-import com.liuning.web.StartApplication;
+import com.liuning.web.Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +16,7 @@ import javax.annotation.Resource;
  * @since 2020-10-04 21:12
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {StartApplication.class})
+@SpringBootTest(classes = {Application.class})
 public class RetryTest {
 
     @Resource

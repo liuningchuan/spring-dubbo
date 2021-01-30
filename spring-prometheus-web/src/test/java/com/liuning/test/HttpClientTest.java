@@ -1,7 +1,7 @@
 package com.liuning.test;
 
 import com.liuning.service.user.UserService;
-import com.liuning.web.StartApplication;
+import com.liuning.web.Application;
 import com.liuning.web.http.HttpClientAdapter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {StartApplication.class})
+@SpringBootTest(classes = {Application.class})
 public class HttpClientTest {
 
     @Autowired

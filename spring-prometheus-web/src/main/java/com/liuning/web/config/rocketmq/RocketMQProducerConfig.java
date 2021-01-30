@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * @author liuning
  * @since 2020-11-29 23:36
  */
-@Configuration
+//@Configuration
 public class RocketMQProducerConfig {
 
     @Value("${rocketmq.address}")
