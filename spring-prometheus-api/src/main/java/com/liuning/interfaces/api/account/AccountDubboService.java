@@ -1,6 +1,6 @@
 package com.liuning.interfaces.api.account;
 
-import com.liuning.interfaces.dto.BaseResponse;
+import com.liuning.interfaces.common.Result;
 import com.liuning.interfaces.dto.account.AccountOpenReqDto;
 import com.liuning.interfaces.dto.account.AccountOpenResDto;
 
@@ -17,5 +17,5 @@ public interface AccountDubboService {
      * @param req AccountOpenReqDto
      * @return AccountOpenResDto
      */
-    BaseResponse<AccountOpenResDto> accountOpen(AccountOpenReqDto req);
+    Result<AccountOpenResDto> accountOpen(AccountOpenReqDto req);
 }

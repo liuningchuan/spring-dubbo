@@ -1,6 +1,6 @@
 package com.liuning.interfaces.api.trade;
 
-import com.liuning.interfaces.dto.BaseResponse;
+import com.liuning.interfaces.common.Result;
 import com.liuning.interfaces.dto.trade.PayForAnotherReqDto;
 import com.liuning.interfaces.dto.trade.PayForAnotherResDto;
 import com.liuning.interfaces.dto.trade.WithdrawalsReqDto;
@@ -13,13 +13,13 @@ public interface TradeDubboService {
      * @param req PayForAnotherReqDto
      * @return PayForAnotherResDto
      */
-    BaseResponse<PayForAnotherResDto> payForAnother(PayForAnotherReqDto req);
+    Result<PayForAnotherResDto> payForAnother(PayForAnotherReqDto req);
 
     /**
      * 提现
      * @param req WithdrawalsReqDto
      * @return WithdrawalsResDto
      */
-    BaseResponse<WithdrawalsResDto> withdrawals(WithdrawalsReqDto req);
+    Result<WithdrawalsResDto> withdrawals(WithdrawalsReqDto req);
 
 }
