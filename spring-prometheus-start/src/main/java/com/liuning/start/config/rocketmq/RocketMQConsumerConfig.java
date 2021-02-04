@@ -1,4 +1,4 @@
-package com.liuning.web.config.rocketmq;
+package com.liuning.start.config.rocketmq;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.exception.MQClientException;

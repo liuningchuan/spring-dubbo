@@ -2,7 +2,6 @@ package com.liuning.test.function;
 
 import com.liuning.dao.entity.UserExample;
 import com.liuning.dao.mapper.UserMapper;
-import com.liuning.web.Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

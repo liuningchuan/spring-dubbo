@@ -1,4 +1,4 @@
-package com.liuning.web.config;
+package com.liuning.start.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;

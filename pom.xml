@@ -17,6 +17,7 @@
         <module>spring-prometheus-dto</module>
         <module>spring-prometheus-common</module>
         <module>spring-prometheus-invoke</module>
+        <module>spring-prometheus-start</module>
     </modules>
 
     <scm>

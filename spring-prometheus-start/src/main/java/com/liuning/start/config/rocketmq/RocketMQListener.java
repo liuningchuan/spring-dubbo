@@ -1,4 +1,4 @@
-package com.liuning.web.config.rocketmq;
+package com.liuning.start.config.rocketmq;
 
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;

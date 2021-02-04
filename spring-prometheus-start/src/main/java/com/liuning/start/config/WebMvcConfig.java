@@ -1,4 +1,4 @@
-package com.liuning.web.config;
+package com.liuning.start.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;

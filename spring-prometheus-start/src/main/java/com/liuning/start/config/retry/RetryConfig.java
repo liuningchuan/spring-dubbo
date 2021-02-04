@@ -1,4 +1,4 @@
-package com.liuning.web.config.retry;
+package com.liuning.start.config.retry;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

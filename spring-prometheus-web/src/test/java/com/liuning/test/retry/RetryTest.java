@@ -1,7 +1,6 @@
 package com.liuning.test.retry;
 
 import com.liuning.service.retry.RetryService;
-import com.liuning.web.Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

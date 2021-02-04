@@ -1,4 +1,4 @@
-package com.liuning.web.config;
+package com.liuning.start.config;
 
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ConsumerConfig;
