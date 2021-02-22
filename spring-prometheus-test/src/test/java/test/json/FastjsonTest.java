@@ -1,4 +1,4 @@
-package com.liuning.test.json;
+package test.json;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.liuning.dao.entity.User;
 import com.liuning.dao.mapper.UserMapper;
+import com.liuning.start.Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

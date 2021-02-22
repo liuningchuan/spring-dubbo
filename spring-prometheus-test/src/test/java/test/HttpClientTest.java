@@ -1,6 +1,7 @@
-package com.liuning.test;
+package test;
 
 import com.liuning.service.user.UserService;
+import com.liuning.start.Application;
 import com.liuning.web.http.HttpClientAdapter;
 import org.junit.Test;
 import org.junit.runner.RunWith;

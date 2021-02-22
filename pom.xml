@@ -18,6 +18,7 @@
         <module>spring-prometheus-common</module>
         <module>spring-prometheus-invoke</module>
         <module>spring-prometheus-start</module>
+        <module>spring-prometheus-test</module>
     </modules>
 
     <scm>

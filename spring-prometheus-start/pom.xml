@@ -29,6 +29,11 @@
             <artifactId>spring-prometheus-common</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.liuning</groupId>
+            <artifactId>spring-prometheus-web</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>

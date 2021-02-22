@@ -1,4 +1,4 @@
-package com.liuning.test;
+package test;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.gson.reflect.TypeToken;
@@ -8,7 +8,9 @@ import com.liuning.dao.entity.User;
 import org.junit.Test;
 
 import java.lang.reflect.Type;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author: liuning

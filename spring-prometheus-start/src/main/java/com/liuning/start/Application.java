@@ -17,9 +17,8 @@ import javax.servlet.ServletException;
  * @date 2019/12/01 23:29
  */
 @EnableRetry
-@SpringBootApplication(scanBasePackages = {"com.liuning.service.*",
-        "com.liuning.web.*",
-        "com.liuning.dao.*"
+@SpringBootApplication(scanBasePackages = {
+        "com.liuning.*"
 })
 public class Application extends SpringBootServletInitializer {
 

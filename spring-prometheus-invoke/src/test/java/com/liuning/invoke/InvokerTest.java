@@ -3,7 +3,6 @@ package com.liuning.invoke;
 import com.liuning.invoke.invoker.BaseResponse;
 import com.liuning.invoke.invoker.GenericInvokerTemplate;
 import com.liuning.invoke.trade.TradeInvoker;
-import com.liuning.invoke.trade.impl.TradeInvokerImpl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @author liuning
  * @since 2020-09-21 22:44
  */
-@ContextConfiguration(classes = TradeInvokerImpl.class)
+@ContextConfiguration(classes = TradeInvoker.class)
 @RunWith(SpringRunner.class)
 public class InvokerTest {
 

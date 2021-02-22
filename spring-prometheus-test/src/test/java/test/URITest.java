@@ -1,4 +1,4 @@
-package com.liuning.test;
+package test;
 
 import java.net.URI;
 import java.net.URISyntaxException;

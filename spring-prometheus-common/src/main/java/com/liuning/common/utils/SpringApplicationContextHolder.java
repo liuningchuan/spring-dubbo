@@ -3,7 +3,8 @@ package com.liuning.common.utils;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Component;
+
+import java.util.stream.Stream;
 
 /**
  * Spring容器会检测容器中的所有Bean，如果发现某个Bean实现了ApplicationContextAware接口，
@@ -14,7 +15,6 @@ import org.springframework.stereotype.Component;
  * 在多线程下，无法使用@Autowired或@Resource自动注入bean
  * 可以使用此方法获取bean：SpringApplicationContextHolder.getBean(xxx.class)
  */
-@Component
 public class SpringApplicationContextHolder implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext;
@@ -38,5 +38,11 @@ public class SpringApplicationContextHolder implements ApplicationContextAware {
      */
     public static <T> T getBean(String name, Class<T> requiredType) {
         return applicationContext.getBean(name, requiredType);
+    }
+
+    public static void getBeanDefinitionNames() {
+        String[] beanNames = applicationContext.getBeanDefinitionNames();
+        // 利用jdk8的Stream快速编写打印方法
+        Stream.of(beanNames).forEach(System.out::println);
     }
 }
