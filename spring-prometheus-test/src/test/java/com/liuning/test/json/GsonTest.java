@@ -1,4 +1,4 @@
-package test.json;
+package com.liuning.test.json;
 
 import com.google.gson.*;
 import com.google.gson.internal.bind.util.ISO8601Utils;

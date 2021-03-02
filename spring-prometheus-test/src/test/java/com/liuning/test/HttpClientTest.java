@@ -1,4 +1,4 @@
-package test;
+package com.liuning.test;
 
 import com.liuning.service.user.UserService;
 import com.liuning.start.Application;

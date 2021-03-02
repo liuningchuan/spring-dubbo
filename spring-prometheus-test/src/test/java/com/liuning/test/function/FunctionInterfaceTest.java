@@ -1,4 +1,4 @@
-package test.function;
+package com.liuning.test.function;
 
 import com.liuning.dao.entity.UserExample;
 import com.liuning.dao.mapper.UserMapper;

@@ -17,7 +17,7 @@
     <property name="LOG_COMMON_PATTERN" value="%d %-5level [%X{TRACE_ID}] %logger{36} - %msg%n"/>
 
     <!-- 日志文件路径 -->
-    <property name="LOG_HOME" value="/Users/liuning/tomcat/logs/spring-prometheus"/>
+    <springProperty name="LOG_HOME" source="log.app.home" defaultValue="/home/tomcat/logs/spring-prometheus"/>
 
     <!-- 日志文件大小,超过这个大小将被压缩 -->
     <property scope="context" name="LOG_MAX_SIZE" source="log.maxsize" value="100MB"/>

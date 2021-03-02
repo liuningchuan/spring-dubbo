@@ -1,4 +1,4 @@
-package test;
+package com.liuning.test;
 
 import com.liuning.web.concurrent.singleton.ThreadExecutor;
 import org.junit.Test;

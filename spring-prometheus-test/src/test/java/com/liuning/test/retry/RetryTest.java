@@ -1,4 +1,4 @@
-package test.retry;
+package com.liuning.test.retry;
 
 import com.liuning.service.retry.RetryService;
 import com.liuning.start.Application;

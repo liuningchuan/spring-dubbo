@@ -1,4 +1,4 @@
-package test.json;
+package com.liuning.test.json;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -77,7 +77,7 @@ public class FastjsonTest {
         System.out.println(JSON.toJSONString(JSON.toJSONString(jsonStr)));
 
         User addUser = new User();
-        addUser.setName("test");
+        addUser.setName("com/liuning");
         addUser.setPassword(jsonStr);
         addUser.setEmail(JSON.toJSONString(jsonStr));
 

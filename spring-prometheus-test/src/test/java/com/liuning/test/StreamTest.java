@@ -1,4 +1,4 @@
-package test;
+package com.liuning.test;
 
 import com.google.common.collect.Lists;
 import org.junit.Test;

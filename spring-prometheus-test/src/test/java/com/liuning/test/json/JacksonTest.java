@@ -1,4 +1,4 @@
-package test.json;
+package com.liuning.test.json;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -65,7 +65,7 @@ public class JacksonTest {
 
         //ObjectNode
         ObjectNode node = mapper.createObjectNode();
-        node.put("name", "test");
+        node.put("name", "com/liuning");
         node.put("age", 20);
         System.out.println(node);
 

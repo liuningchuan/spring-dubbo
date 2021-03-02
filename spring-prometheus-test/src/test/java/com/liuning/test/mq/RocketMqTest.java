@@ -1,4 +1,4 @@
-package test.mq;
+package com.liuning.test.mq;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;

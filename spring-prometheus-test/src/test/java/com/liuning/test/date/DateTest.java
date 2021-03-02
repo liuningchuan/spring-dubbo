@@ -1,4 +1,4 @@
-package test.date;
+package com.liuning.test.date;
 
 import com.liuning.common.utils.DateFormatUtil;
 import com.liuning.common.utils.JsonUtils;

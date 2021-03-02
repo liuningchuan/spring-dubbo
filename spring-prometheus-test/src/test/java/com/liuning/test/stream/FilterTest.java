@@ -1,4 +1,4 @@
-package test.stream;
+package com.liuning.test.stream;
 
 import org.junit.Test;
 
