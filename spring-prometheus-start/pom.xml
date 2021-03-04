@@ -5,11 +5,12 @@
     <parent>
         <artifactId>spring-prometheus</artifactId>
         <groupId>com.liuning</groupId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
+    <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-prometheus-start</artifactId>
+    <packaging>war</packaging>
 
     <dependencies>
         <dependency>
@@ -104,5 +105,28 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <finalName>spring-promethesu-v10</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!--maven-deploy-plugin-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <!--deploy到远程仓库时忽略此模块-->
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <!--maven-source-plugin-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
