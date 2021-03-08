@@ -15,24 +15,11 @@
     <dependencies>
         <dependency>
             <groupId>com.liuning</groupId>
-            <artifactId>spring-prometheus-dao</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.liuning</groupId>
-            <artifactId>spring-prometheus-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.liuning</groupId>
             <artifactId>spring-prometheus-service</artifactId>
         </dependency>
         <dependency>
             <groupId>com.liuning</groupId>
-            <artifactId>spring-prometheus-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.liuning</groupId>
             <artifactId>spring-prometheus-web</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -102,6 +89,11 @@
         <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
+        </dependency>
+        <!--jakarta.servlet-api -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
         </dependency>
     </dependencies>
 

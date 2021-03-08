@@ -1,4 +1,4 @@
-package com.liuning.test;
+package test;
 
 import com.liuning.common.algorithms.SnowflakeId;
 

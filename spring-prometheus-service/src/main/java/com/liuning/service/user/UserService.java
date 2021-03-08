@@ -6,7 +6,6 @@ import com.liuning.dao.mapper.UserDetailMapper;
 import com.liuning.dao.mapper.UserMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -28,7 +27,7 @@ import javax.annotation.Resource;
  */
 @Service
 @Scope(value = "singleton")
-public class UserService implements InitializingBean {
+public class UserService {
 
     private static final Logger log = LoggerFactory.getLogger(UserService.class);
 
@@ -158,10 +157,5 @@ public class UserService implements InitializingBean {
             log.error("插入数据库异常", e);
             txManager.rollback(status);
         }
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        log.info("调用了InitializingBean的afterPropertiesSet方法");
     }
 }

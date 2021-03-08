@@ -32,7 +32,7 @@ public class Application extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        System.setProperty("app-name", "spring-dubbo");
+        System.setProperty("app-name", "spring-prometheus");
         return builder.sources(Application.class);
     }
 
