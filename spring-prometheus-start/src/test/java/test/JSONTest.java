@@ -1,4 +1,4 @@
-package com.liuning.test;
+package test;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.gson.reflect.TypeToken;

@@ -1,4 +1,4 @@
-package com.liuning.test.json;
+package test.json;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;

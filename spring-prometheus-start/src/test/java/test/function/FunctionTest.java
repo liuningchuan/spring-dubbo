@@ -1,4 +1,4 @@
-package com.liuning.test.function;
+package test.function;
 
 @FunctionalInterface
 public interface FunctionTest {

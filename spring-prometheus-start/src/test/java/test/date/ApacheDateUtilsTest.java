@@ -1,4 +1,4 @@
-package com.liuning.test.date;
+package test.date;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
