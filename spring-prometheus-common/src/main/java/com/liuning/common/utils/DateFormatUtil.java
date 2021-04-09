@@ -33,9 +33,21 @@ public class DateFormatUtil {
     }
 
     /**
+     * 格式化日期
+     *
+     * @param localDateTime 需要格式化的Date对象
+     * @param format        日期格式
+     * @return 按照日期格式format得到的字符串
+     */
+    public static String format(LocalDateTime localDateTime, String format) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+        return formatter.format(localDateTime);
+    }
+
+    /**
      * 将日期格式为originFormatter的字符串转换成targetFormatter格式的字符串
      *
-     * @param dateTime 日期字符串
+     * @param dateTime        日期字符串
      * @param originFormatter 转换前的日期格式
      * @param targetFormatter 转换后的日期格式
      * @return 转换后的日期字符串

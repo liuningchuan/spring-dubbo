@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -33,6 +34,7 @@ public class DateTest {
         System.out.println(DateFormatUtil.parse("2020-08-14 23:53:37:244", "yyyy-MM-dd HH:mm:ss:SSS"));
         System.out.println(DateFormatUtil.parse("2020-08-14", "yyyyMMdd"));
         System.out.println(DateFormatUtil.now());
+        System.out.println(DateFormatUtil.format(LocalDateTime.now(), "yyyy-MM-dd HH-mm-ss"));
     }
 
     @Test
