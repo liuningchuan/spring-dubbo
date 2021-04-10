@@ -125,4 +125,14 @@ public class DateFormatUtil {
         return Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()).toLocalDateTime();
     }
 
+    /**
+     * 将时间戳转换为LocalDateTime对象
+     *
+     * @param timestamp 时间戳
+     * @return LocalDateTime对象
+     */
+    public static LocalDateTime ofTimestamp(long timestamp) {
+        Instant instant = Instant.ofEpochMilli(timestamp);
+        return LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+    }
 }
