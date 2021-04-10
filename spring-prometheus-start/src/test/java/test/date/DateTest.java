@@ -39,7 +39,7 @@ public class DateTest {
 
     @Test
     public void dateFormateUtil() {
-        System.out.println(DateFormatUtil.formate("20201015", "yyyyMMdd", "yyyy-MM-dd"));
+        System.out.println(DateFormatUtil.format("20201015", "yyyyMMdd", "yyyy-MM-dd"));
     }
 
     @Test

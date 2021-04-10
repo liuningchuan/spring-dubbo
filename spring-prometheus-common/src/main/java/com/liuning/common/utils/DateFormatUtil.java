@@ -52,7 +52,7 @@ public class DateFormatUtil {
      * @param targetFormatter 转换后的日期格式
      * @return 转换后的日期字符串
      */
-    public static String formate(String dateTime, String originFormatter, String targetFormatter) {
+    public static String format(String dateTime, String originFormatter, String targetFormatter) {
         LocalDate localDate = LocalDate.parse(dateTime, DateTimeFormatter.ofPattern(originFormatter));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(targetFormatter);
         return formatter.format(localDate);
