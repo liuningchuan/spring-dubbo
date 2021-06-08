@@ -7,7 +7,7 @@
     <groupId>com.liuning</groupId>
     <artifactId>spring-prometheus</artifactId>
     <packaging>pom</packaging>
-    <version>${revision}</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <modules>
         <module>spring-prometheus-api</module>
@@ -56,7 +56,6 @@
     </distributionManagement>
 
     <properties>
-        <revision>1.0.0-SNAPSHOT</revision>
         <java.version>1.8</java.version>
         <project.source.encoding>UTF-8</project.source.encoding>
         <!--open-source-->
@@ -75,6 +74,7 @@
         <springfox-swagger.version>2.6.1</springfox-swagger.version>
         <logback-classic.version>1.2.3</logback-classic.version>
         <commons-lang3.version>3.9</commons-lang3.version>
+        <fastdfs-client-java.version>1.29-SNAPSHOT</fastdfs-client-java.version>
         <httpclient.version>4.5.11</httpclient.version>
         <gson.version>2.8.6</gson.version>
         <fastjson.version>1.2.70</fastjson.version>
@@ -244,6 +244,12 @@
                 <scope>runtime</scope>
                 <optional>true</optional>
             </dependency>
+            <!--fastdfs-client，中央仓库没有fastdfs客户端，需要自己install到本地仓库-->
+            <dependency>
+                <groupId>org.csource</groupId>
+                <artifactId>fastdfs-client-java</artifactId>
+                <version>${fastdfs-client-java.version}</version>
+            </dependency>
             <!--commons-lang3-->
             <dependency>
                 <groupId>org.apache.commons</groupId>
@@ -273,7 +279,6 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
-                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
