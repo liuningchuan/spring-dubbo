@@ -1,7 +1,10 @@
 package com.liuning.service.client;
 
 import lombok.extern.slf4j.Slf4j;
+import org.csource.common.MyException;
+import org.csource.common.NameValuePair;
 import org.csource.fastdfs.*;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -18,21 +21,32 @@ import java.io.IOException;
 public class FastDfsClient {
 
     @PostConstruct
-    public void init() {
-        try {
-            String CONF_FILENAME = Thread.currentThread().getContextClassLoader().getResource("fastdfs_client.conf").getPath();
-            ClientGlobal.init(CONF_FILENAME);
-            TrackerGroup trackerGroup = ClientGlobal.g_tracker_group;
-        } catch (Exception e) {
-            log.error(String.valueOf(e));
-        }
+    public void init() throws IOException, MyException {
+        String CONF_FILENAME = new ClassPathResource("fdfs_client.conf").getFile().getAbsolutePath();
+        ClientGlobal.init(CONF_FILENAME);
+        log.info("network_timeout=" + ClientGlobal.g_network_timeout + "ms");
+        log.info("charset=" + ClientGlobal.g_charset);
     }
 
-    private StorageClient getTrackerClient() throws IOException {
+    /**
+     * 上传文件
+     *
+     * @param file        文件字节流
+     * @param fileExtName 文件扩展名
+     * @return 文件路径：group/filePath
+     * @throws Exception IOException
+     */
+    public String uploadFile(byte[] file, String fileExtName) throws Exception {
+        StorageClient1 client = getStorageClient();
+        NameValuePair[] meta_list = new NameValuePair[1];
+        return client.upload_file1(file, fileExtName, meta_list);
+    }
+
+    private StorageClient1 getStorageClient() throws IOException {
         TrackerClient trackerClient = new TrackerClient();
         TrackerServer trackerServer = trackerClient.getTrackerServer();
-        StorageClient storageClient = new StorageClient(trackerServer, null);
-        return  storageClient;
+        StorageServer storageServer = null;
+        return new StorageClient1(trackerServer, storageServer);
     }
 
 }
