@@ -16,8 +16,8 @@
         <module>spring-prometheus-service</module>
         <module>spring-prometheus-dto</module>
         <module>spring-prometheus-common</module>
-        <module>spring-prometheus-invoke</module>
-        <module>spring-prometheus-start</module>
+        <module>spring-prometheus-gateway</module>
+        <module>spring-prometheus-config</module>
         <module>spring-prometheus-starter</module>
     </modules>
 
