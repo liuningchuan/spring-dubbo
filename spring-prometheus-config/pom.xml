@@ -9,7 +9,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-prometheus-start</artifactId>
+    <artifactId>spring-prometheus-config</artifactId>
     <packaging>war</packaging>
 
     <dependencies>

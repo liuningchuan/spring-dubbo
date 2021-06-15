@@ -150,12 +150,12 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>spring-prometheus-invoke</artifactId>
+                <artifactId>spring-prometheus-gateway</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>spring-prometheus-start</artifactId>
+                <artifactId>spring-prometheus-config</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

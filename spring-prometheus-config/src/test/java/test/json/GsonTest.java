@@ -1,6 +1,8 @@
 package test.json;
 
 import com.google.gson.*;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.internal.bind.util.ISO8601Utils;
 import org.apache.commons.lang3.time.FastDateFormat;
 import org.junit.Test;
@@ -39,8 +41,10 @@ public class GsonTest {
                         }
                     }
                 })
+                .excludeFieldsWithoutExposeAnnotation()
                 .create();
 
+        System.out.print("Gson序列化测试:");
         DateExample date = new DateExample();
         date.setName("liuning");
         date.setDescription("刘宁");
@@ -68,10 +72,13 @@ public class GsonTest {
 
     private static class DateExample {
 
+        @Expose
         public String name;
 
+        @Expose(serialize = false)
         public String description;
 
+        @Expose
         public Date date;
 
         public String getName() {
