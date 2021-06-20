@@ -17,7 +17,6 @@
         <module>spring-prometheus-dto</module>
         <module>spring-prometheus-common</module>
         <module>spring-prometheus-gateway</module>
-        <module>spring-prometheus-config</module>
         <module>spring-prometheus-starter</module>
     </modules>
 
@@ -151,11 +150,6 @@
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>spring-prometheus-gateway</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>spring-prometheus-config</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

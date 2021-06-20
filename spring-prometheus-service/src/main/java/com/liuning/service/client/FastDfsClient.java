@@ -22,7 +22,7 @@ public class FastDfsClient {
 
     @PostConstruct
     public void init() throws IOException, MyException {
-        String CONF_FILENAME = new ClassPathResource("fdfs_client.conf").getFile().getAbsolutePath();
+        String CONF_FILENAME = new ClassPathResource("fdfs_client.properties").getFile().getAbsolutePath();
         ClientGlobal.init(CONF_FILENAME);
         log.info("network_timeout=" + ClientGlobal.g_network_timeout + "ms");
         log.info("charset=" + ClientGlobal.g_charset);

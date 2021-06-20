@@ -21,7 +21,7 @@ public class TestController {
     private static final Logger log = LoggerFactory.getLogger(TestController.class);
 
     @Resource
-    UserMapper userMapper;
+    private UserMapper userMapper;
 
     @GetMapping("/world/{start}/{end}")
     @BusiLog(name = "测试接口",ignore = true)
