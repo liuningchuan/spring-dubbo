@@ -12,6 +12,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-prometheus-web</artifactId>
     <name>spring-prometheus-web ${project.version}</name>
+    <packaging>war</packaging>
 
     <dependencies>
         <dependency>
@@ -95,7 +96,7 @@
     </dependencies>
 
     <build>
-        <finalName>spring-promethesu-v10</finalName>
+        <finalName>spring-prometheus-v10</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

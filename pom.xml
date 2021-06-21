@@ -236,8 +236,6 @@
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
                 <version>${logback-classic.version}</version>
-                <scope>runtime</scope>
-                <optional>true</optional>
             </dependency>
             <!--fastdfs-client，中央仓库没有fastdfs客户端，需要自己install到本地仓库-->
             <dependency>
