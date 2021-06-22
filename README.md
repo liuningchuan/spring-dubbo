@@ -11,6 +11,39 @@
 
 
 
+### 监控集成
+
+Spring Boot 2.x 版本中， `spring-boot-actuator` 使用了Micrometer来实现监控。同时引入`micrometer-registry-prometheus` 依赖，该包对 Prometheus 进行了封装，可以很方便的集成到 Spring Boot 工程中。
+
+```xml
+<dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-registry-prometheus</artifactId>
+    <version>1.7.0</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+    <version>2.1.8.RELEASE</version>
+</dependency>
+```
+
+在 `application.properties` 中配置如下：
+
+```properties
+#开启Actuator服务
+management.endpoints.web.exposure.include=*
+management.metrics.tags.application=application-name
+```
+
+访问 `http://{ip}:{port}/actuator/prometheus` 就可以看到应用的一系列不同类型 metrics 信息，配合Prometheus可以监控应用指标，配合Grafana Dashboard可以优雅直观地展示这些监控值。
+
+访问 `http://{ip}:{port}/actuator/health` 可以进行应用探活。
+
+
+
+
+
 > Apache Dubbo是一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智能容错和负载均衡，以及服务自动注册和发现。
 >
 > 简单来说Dubbo是一个分布式服务框架，致力于提供高性能和透明化的RPC远程服务调用方案，以及SOA服务治理方案。
