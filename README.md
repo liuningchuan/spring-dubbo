@@ -42,6 +42,16 @@ management.metrics.tags.application=application-name
 
 
 
+### RocketMQ
+
+#### 消费模式
+
+**集群消费**：当consumer使用集群消费时，每条消息只会被consumer集群内的任意一个consumer实例消费一次。使用集群消费时，consumer的消费进度是存储在broker上，consumer自身是不存储消费进度的，这样保证了消息不会被重复消费。同时，在集群消费模式下，并不能保证每一次消息失败重投都投递到同一个consumer实例。
+
+**广播消费**：当consumer使用广播消费时，每条消息都会被consumer集群内所有的consumer实例消费一次，也就是说每条消息至少被每一个consumer实例消费一次。广播消费时，不会进行消费失败重投的，需要特别关注消费失败的情况。
+
+
+
 
 
 > Apache Dubbo是一款高性能、轻量级的开源Java RPC框架，它提供了三大核心能力：面向接口的远程方法调用，智能容错和负载均衡，以及服务自动注册和发现。
