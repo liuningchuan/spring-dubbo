@@ -44,11 +44,20 @@ management.metrics.tags.application=application-name
 
 ### RocketMQ
 
+#### 消费者组
+
+一个消费者组，除了使用同一个group name外，订阅的 tag 也必须是一样的，只有符合这两个条件的 consumer 实例才能组成 consumer 集群。如果使用相同的group name但是订阅不同的tag，则会出现消息丢失的情况。
+
 #### 消费模式
 
 **集群消费**：当consumer使用集群消费时，每条消息只会被consumer集群内的任意一个consumer实例消费一次。使用集群消费时，consumer的消费进度是存储在broker上，consumer自身是不存储消费进度的，这样保证了消息不会被重复消费。同时，在集群消费模式下，并不能保证每一次消息失败重投都投递到同一个consumer实例。
 
 **广播消费**：当consumer使用广播消费时，每条消息都会被consumer集群内所有的consumer实例消费一次，也就是说每条消息至少被每一个consumer实例消费一次。广播消费时，不会进行消费失败重投的，需要特别关注消费失败的情况。
+
+```java
+defaultMQPushConsumer.setMessageModel(MessageModel.BROADCASTING);
+defaultMQPushConsumer.setMessageModel(MessageModel.CLUSTERING);
+```
 
 
 

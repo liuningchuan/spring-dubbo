@@ -4,8 +4,10 @@ import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
+import org.apache.rocketmq.common.protocol.heartbeat.SubscriptionData;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.Resource;
 
@@ -15,13 +17,20 @@ import javax.annotation.Resource;
  * @author liuning
  * @since 2020-12-03 23:54
  */
+@Configuration
 public class RocketMQConsumerConfig {
 
     /**
-     * 集群地址
+     * 集群A地址
      */
     @Value("${rocketmq.address}")
-    private String namesrvAddress;
+    private String namesrvAddressA;
+
+    /**
+     * 集群B地址
+     */
+    @Value("${rocketmq.address}")
+    private String namesrvAddressB;
 
     /**
      * 消费者群组
@@ -48,7 +57,7 @@ public class RocketMQConsumerConfig {
     public DefaultMQPushConsumer consumer() {
         System.setProperty("rocketmq.client.log.loadconfig", "false");
         DefaultMQPushConsumer defaultMQPushConsumer = new DefaultMQPushConsumer();
-        defaultMQPushConsumer.setNamesrvAddr(namesrvAddress);
+        defaultMQPushConsumer.setNamesrvAddr(namesrvAddressA);
         defaultMQPushConsumer.setConsumerGroup(consumerGroup);
         defaultMQPushConsumer.setInstanceName(String.valueOf(System.currentTimeMillis()));
         try {
@@ -59,6 +68,25 @@ public class RocketMQConsumerConfig {
         defaultMQPushConsumer.registerMessageListener(listener);
         defaultMQPushConsumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
         defaultMQPushConsumer.setMessageModel(MessageModel.CLUSTERING);
+        defaultMQPushConsumer.setConsumeMessageBatchMaxSize(32);
+        defaultMQPushConsumer.setVipChannelEnabled(false);
+        return defaultMQPushConsumer;
+    }
+
+    @Bean(name = "defaultMQPushConsumer", initMethod = "start", destroyMethod = "shutdown")
+    public DefaultMQPushConsumer defaultMQPushConsumer() {
+        DefaultMQPushConsumer defaultMQPushConsumer = new DefaultMQPushConsumer();
+        defaultMQPushConsumer.setNamesrvAddr(namesrvAddressB);
+        defaultMQPushConsumer.setConsumerGroup(consumerGroup);
+        defaultMQPushConsumer.setInstanceName(String.valueOf(System.currentTimeMillis()));
+        try {
+            defaultMQPushConsumer.subscribe(topic, SubscriptionData.SUB_ALL);
+        } catch (MQClientException e) {
+            throw new RuntimeException();
+        }
+        defaultMQPushConsumer.registerMessageListener(listener);
+        defaultMQPushConsumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
+        defaultMQPushConsumer.setMessageModel(MessageModel.BROADCASTING);
         defaultMQPushConsumer.setConsumeMessageBatchMaxSize(32);
         defaultMQPushConsumer.setVipChannelEnabled(false);
         return defaultMQPushConsumer;
