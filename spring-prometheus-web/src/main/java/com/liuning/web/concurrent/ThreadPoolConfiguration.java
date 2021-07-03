@@ -52,6 +52,14 @@ public class ThreadPoolConfiguration {
         threadPoolExecutor.allowCoreThreadTimeOut(false);
         //设置线程池任务拒绝策略
         threadPoolExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.AbortPolicy());
+        threadPoolExecutor.shutdown();
+        //注册一个JVM勾子函数，在JVM关闭前，先将线程池关闭，释放资源
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                threadPoolExecutor.shutdown();
+            }
+        }));
         return threadPoolExecutor;
     }
 }
