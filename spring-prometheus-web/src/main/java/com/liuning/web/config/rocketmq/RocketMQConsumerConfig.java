@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * RocketMQ消费者配置
@@ -60,17 +62,19 @@ public class RocketMQConsumerConfig {
         defaultMQPushConsumer.setNamesrvAddr(namesrvAddressA);
         defaultMQPushConsumer.setConsumerGroup(consumerGroup);
         defaultMQPushConsumer.setInstanceName(String.valueOf(System.currentTimeMillis()));
-        try {
-            defaultMQPushConsumer.subscribe(topic, tag);
-        } catch (MQClientException e) {
-            throw new RuntimeException();
-        }
+        defaultMQPushConsumer.setSubscription(this.getSubscription());
         defaultMQPushConsumer.registerMessageListener(listener);
         defaultMQPushConsumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
         defaultMQPushConsumer.setMessageModel(MessageModel.CLUSTERING);
         defaultMQPushConsumer.setConsumeMessageBatchMaxSize(32);
         defaultMQPushConsumer.setVipChannelEnabled(false);
         return defaultMQPushConsumer;
+    }
+
+    private Map<String, String> getSubscription() {
+        Map<String, String> subscription = new HashMap<>();
+        subscription.put(topic, tag);
+        return subscription;
     }
 
     @Bean(name = "defaultMQPushConsumer", initMethod = "start", destroyMethod = "shutdown")
@@ -89,6 +93,7 @@ public class RocketMQConsumerConfig {
         defaultMQPushConsumer.setMessageModel(MessageModel.BROADCASTING);
         defaultMQPushConsumer.setConsumeMessageBatchMaxSize(32);
         defaultMQPushConsumer.setVipChannelEnabled(false);
+        defaultMQPushConsumer.setPullInterval(0);
         return defaultMQPushConsumer;
     }
 }
