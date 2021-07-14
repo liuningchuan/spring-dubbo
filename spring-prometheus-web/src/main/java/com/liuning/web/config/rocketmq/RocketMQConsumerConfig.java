@@ -1,5 +1,7 @@
 package com.liuning.web.config.rocketmq;
 
+import org.apache.rocketmq.acl.common.AclClientRPCHook;
+import org.apache.rocketmq.acl.common.SessionCredentials;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
@@ -41,6 +43,18 @@ public class RocketMQConsumerConfig {
     private String consumerGroup;
 
     /**
+     * access key
+     */
+    @Value("${rocketmq.consumer.access.key}")
+    private String consumerAccessKey;
+
+    /**
+     * secret key
+     */
+    @Value("${rocketmq.consumer.secret.key}")
+    private String consumerSecretKey;
+
+    /**
      * topic
      */
     @Value("${rocketmq.topic}")
@@ -79,7 +93,8 @@ public class RocketMQConsumerConfig {
 
     @Bean(name = "defaultMQPushConsumer", initMethod = "start", destroyMethod = "shutdown")
     public DefaultMQPushConsumer defaultMQPushConsumer() {
-        DefaultMQPushConsumer defaultMQPushConsumer = new DefaultMQPushConsumer();
+        DefaultMQPushConsumer defaultMQPushConsumer = new DefaultMQPushConsumer(
+                new AclClientRPCHook(new SessionCredentials(consumerAccessKey, consumerSecretKey)));
         defaultMQPushConsumer.setNamesrvAddr(namesrvAddressB);
         defaultMQPushConsumer.setConsumerGroup(consumerGroup);
         defaultMQPushConsumer.setInstanceName(String.valueOf(System.currentTimeMillis()));

@@ -67,7 +67,7 @@
         <druid.version>1.1.10</druid.version>
         <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>
         <mysql-connector-java.version>8.0.16</mysql-connector-java.version>
-        <rocketmq-client.version>4.3.0</rocketmq-client.version>
+        <rocketmq-client.version>4.7.1</rocketmq-client.version>
         <rocketmq-spring-boot-starter.version>2.1.0</rocketmq-spring-boot-starter.version>
         <dubbo.version>2.7.2</dubbo.version>
         <curator-recipes.version>2.12.0</curator-recipes.version>
@@ -207,6 +207,12 @@
             <dependency>
                 <groupId>org.apache.rocketmq</groupId>
                 <artifactId>rocketmq-client</artifactId>
+                <version>${rocketmq-client.version}</version>
+            </dependency>
+            <!--acl权限控制-->
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-acl</artifactId>
                 <version>${rocketmq-client.version}</version>
             </dependency>
             <!--dubbo-->
