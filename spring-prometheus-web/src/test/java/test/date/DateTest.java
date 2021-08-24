@@ -52,4 +52,13 @@ public class DateTest {
         LocalDate date1 = LocalDate.parse("2020-12-31");
         System.out.println(date1);
     }
+
+    @Test
+    public void simpleDateFormat1() throws ParseException {
+        LocalDate localDate = LocalDate.of(2021,7,31);
+        LocalDate now = LocalDate.now();
+
+        System.out.println(now.isEqual(localDate));
+        System.out.println(now.isAfter(localDate));
+    }
 }
