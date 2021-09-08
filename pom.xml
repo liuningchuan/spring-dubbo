@@ -69,7 +69,7 @@
         <mysql-connector-java.version>8.0.16</mysql-connector-java.version>
         <rocketmq-client.version>4.7.1</rocketmq-client.version>
         <rocketmq-spring-boot-starter.version>2.1.0</rocketmq-spring-boot-starter.version>
-        <dubbo.version>2.7.2</dubbo.version>
+        <dubbo.version>2.7.13</dubbo.version>
         <curator-recipes.version>2.12.0</curator-recipes.version>
         <zkclient.version>0.11</zkclient.version>
         <springfox-swagger.version>2.6.1</springfox-swagger.version>
